@@ -1,7 +1,10 @@
+import LoginForm from '../components/Login/LoginForm'
+
 const Login = () => {
     return (
         <div className="mt-16">
-            <h1 className="text-3xl fond-bold text-center">Registrarse</h1>
+            <h1 className="text-3xl fond-bold text-center">Iniciar sesion</h1>
+            <LoginForm />
         </div>
     )
 }

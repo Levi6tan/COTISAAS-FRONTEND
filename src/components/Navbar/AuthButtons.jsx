@@ -1,5 +1,14 @@
+import { Link } from 'react-router'
+
 const AuthButtons = () => {
-    return <></>
+    return (
+        <>
+            <Link className="btn btn-neutral btn-outline">Iniciar sesion</Link>
+            <Link className="btn btn-neutral btn-outline" to="/register">
+                Crear Cuenta
+            </Link>
+        </>
+    )
 }
 
 export default AuthButtons

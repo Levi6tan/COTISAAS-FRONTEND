@@ -1,16 +1,14 @@
-import Navbar from './components/Navbar/Navbar'
+import { Routes, Route } from 'react-router' //
 import Home from './pages/Home'
 import Register from './pages/Register'
-import RegisterForm from './components/Register/RegisterForm'
 
 function App() {
     return (
-        <>
-            <Navbar />
-            <Home />
-            <Register />
-            <RegisterForm />
-        </>
+        <Routes>
+            <Route path="/" element={<Home />}></Route>
+            <Route path="/register" element={<Register />}></Route>
+        </Routes>
     )
 }
+
 export default App

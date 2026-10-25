@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useForm } from 'react-hook-form' //valida el form en tiempo real
 import { FaEye, FaEyeSlash } from 'react-icons/fa' //Importando iconos del ojito para el pass
+import { Link } from 'react-router'
 
 const RegisterForm = () => {
     //esta funcion nos devuelve un handleSubmit
@@ -140,6 +141,9 @@ const RegisterForm = () => {
             <button className="btn btn-neutral" type="submit">
                 Registrarse
             </button>
+            <Link className="btn btn-Default" type="submit" to="/login">
+                Iniciar sesion
+            </Link>
         </form>
     )
 }

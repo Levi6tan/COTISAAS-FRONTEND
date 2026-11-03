@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useForm } from 'react-hook-form' //valida el form en tiempo real
 import { FaEye, FaEyeSlash } from 'react-icons/fa' //Importando iconos del ojito para el pass
-import { Link } from 'react-router'
+import { Link } from 'react-router' 
 
 const LoginForm = () => {
     //esta funcion nos devuelve un handleSubmit

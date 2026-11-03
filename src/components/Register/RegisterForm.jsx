@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useForm } from 'react-hook-form' //valida el form en tiempo real
 import { FaEye, FaEyeSlash } from 'react-icons/fa' //Importando iconos del ojito para el pass
 import { Link } from 'react-router'
+import { registerService } from '../../services/authServices.js'
 
 const RegisterForm = () => {
     //esta funcion nos devuelve un handleSubmit
@@ -18,29 +19,28 @@ const RegisterForm = () => {
 
     const onSubmit = (data) => {
         //Registrando el usuario
-        console.log(data)
-        reset()
+        registerService(data, reset)
     }
 
     return (
         <form
             onSubmit={handleSubmit(onSubmit)}
-            className="mt-8 flex flex-col gap-4"
+            className="mt-8 flex flex-col gap-4
             lg:gap-6
-            max-w-500
-            max-auto
+            max-w-500px
+            max-auto "
         >
             <div>
                 <input
                     {...register('username', {
                         required: 'El nombre de usuario es requerido',
                         minLength: {
-                            value: 3,
-                            message: 'Minimo 3 caracteres',
+                            value: 15,
+                            message: 'Minimo 15 caracteres',
                         },
                         maxLength: {
-                            value: 20,
-                            message: 'Maximo de 20 caracteres',
+                            value: 75,
+                            message: 'Maximo de 75 caracteres',
                         },
                     })}
                     className={`p-2 rounded border 
@@ -50,7 +50,7 @@ const RegisterForm = () => {
                             : ''
                     }`}
                     type="text"
-                    placeholder="Nombre de usuario"
+                    placeholder="Nombres y apellidos"
                     name="username"
                     autoComplete="username"
                 />

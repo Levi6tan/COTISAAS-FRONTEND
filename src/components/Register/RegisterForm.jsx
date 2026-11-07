@@ -1,8 +1,11 @@
 import { useState } from 'react'
+import { useUser } from '../../context/UserContext.jsx'
 import { useForm } from 'react-hook-form' //valida el form en tiempo real
 import { FaEye, FaEyeSlash } from 'react-icons/fa' //Importando iconos del ojito para el pass
 import { Link } from 'react-router'
 import { registerService } from '../../services/authServices.js'
+import { Navigate } from 'react-router'
+import toast from 'react-hot-toast'
 
 const RegisterForm = () => {
     //esta funcion nos devuelve un handleSubmit
@@ -15,20 +18,37 @@ const RegisterForm = () => {
         mode: 'onChange', //validacion en tiempo real
     })
 
+    const { userInfo, checkSession } = useUser()
     const [showPassword, setShowPassword] = useState(false)
+    const [redirect, setRedirect] = useState(false)
+    const onSubmit = async (data) => {
+        // Registrando al usuario
+        const result = await registerService(
+            data,
+            reset,
+            setRedirect,
+            checkSession,
+        )
 
-    const onSubmit = (data) => {
-        //Registrando el usuario
-        registerService(data, reset)
+        if (result?.success) {
+            toast.success(result.message || 'Registro exitoso')
+        } else {
+            toast.error(result?.message || 'Error intente más tarde')
+        }
+    }
+
+    if (redirect) {
+        if (userInfo?.isAdmin) {
+            // llevarlo al admin cuando exista la vista
+            return <Navigate to={'/'} />
+        }
+        return <Navigate to={'/'} />
     }
 
     return (
         <form
             onSubmit={handleSubmit(onSubmit)}
-            className="mt-8 flex flex-col gap-4
-            lg:gap-6
-            max-w-500px
-            max-auto "
+            className="mt-8 flex flex-col gap-4 lg:gap-6 max-w-[500px] mx-auto"
         >
             <div>
                 <input
@@ -65,7 +85,7 @@ const RegisterForm = () => {
                     {...register('email', {
                         required: 'El email es requerido',
                         pattern: {
-                            value: /^(?!\.)(?!.*\.\.)([a-z0-9_'+\-\.]*)[a-z0-9_+-]@([a-z0-9][a-z0-9\-]*\.)+[a-z]{2,}$/,
+                            value: /^(?!\.)(?!.*\.\.)([a-z0-9_'+\-.]*)[a-z0-9_+-]@([a-z0-9][a-z0-9-]*\.)+[a-z]{2,}$/,
                             message: 'Correo electrónico inválido',
                         },
                         minLength: {

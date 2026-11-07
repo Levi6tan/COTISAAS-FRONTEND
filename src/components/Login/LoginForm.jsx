@@ -1,41 +1,53 @@
 import { useState } from 'react'
-import { useForm } from 'react-hook-form' //valida el form en tiempo real
-import { FaEye, FaEyeSlash } from 'react-icons/fa' //Importando iconos del ojito para el pass
-import { Link } from 'react-router' 
+import { useForm } from 'react-hook-form' // valida el form en tiempo real
+import { FaEye, FaEyeSlash } from 'react-icons/fa' // Importando iconos del ojito para el pass
+import { Link, Navigate } from 'react-router'
+import { loginService } from '../../services/authServices.js'
+import { useUser } from '../../context/UserContext.jsx'
+import toast from 'react-hot-toast'
 
 const LoginForm = () => {
-    //esta funcion nos devuelve un handleSubmit
+    // esta funcion nos devuelve un handleSubmit
     const {
         register,
         handleSubmit,
         formState: { errors },
         reset,
     } = useForm({
-        mode: 'onChange', //validacion en tiempo real
+        mode: 'onChange', // validacion en tiempo real
     })
 
+    const { checkSession } = useUser()
     const [showPassword, setShowPassword] = useState(false)
+    const [redirect, setRedirect] = useState(false)
 
-    const onSubmit = (data) => {
-        //Logueando el usuario
-        console.log(data)
-        reset()
+    const onSubmit = async (data) => {
+        const result = await loginService(data)
+        if (result?.success) {
+            await checkSession()
+            reset()
+            setRedirect(true)
+            toast.success(result.message || 'Inicio de sesión exitoso')
+        } else {
+            toast.error(result?.message || 'Error al iniciar sesión')
+        }
+    }
+
+    if (redirect) {
+        return <Navigate to="/" />
     }
 
     return (
         <form
             onSubmit={handleSubmit(onSubmit)}
-            className="mt-8 flex flex-col gap-4"
-            lg:gap-6
-            max-w-500
-            max-auto
+            className="mt-8 flex flex-col gap-4 lg:gap-6 max-w-[500px] mx-auto"
         >
             <div>
                 <input
                     {...register('email', {
                         required: 'El email es requerido',
                         pattern: {
-                            value: /^(?!\.)(?!.*\.\.)([a-z0-9_'+\-\.]*)[a-z0-9_+-]@([a-z0-9][a-z0-9\-]*\.)+[a-z]{2,}$/,
+                            value: /^(?!\.)(?!.*\.\.)([a-z0-9_'+\-.]*)[a-z0-9_+-]@([a-z0-9][a-z0-9-]*\.)+[a-z]{2,}$/,
                             message: 'Correo electrónico inválido',
                         },
                         minLength: {
@@ -109,9 +121,12 @@ const LoginForm = () => {
                 )}
             </div>
 
-            <button className="btn btn-neutral" type="submit" to="/login">
-                Iniciar sesion
+            <button className="btn btn-neutral" type="submit">
+                Iniciar sesión
             </button>
+            <Link className="btn btn-Default" to="/register">
+                Crear cuenta
+            </Link>
         </form>
     )
 }

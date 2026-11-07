@@ -3,17 +3,16 @@ import { getProfileService } from '../services/authServices.js'
 
 export const UserContext = createContext({})
 
-export const UserContextProviver = ({ children }) => {
+export const UserContextProvider = ({ children }) => {
     const [userInfo, setUserInfo] = useState({})
     const [loading, setLoading] = useState(true)
 
     // Funcion para verificar la sesión del usuario
     const checkSession = async () => {
         try {
-            setLoading(true)
             const userData = await getProfileService()
-            setUserInfo(userData)
-        } catch (error) {
+            setUserInfo(userData || {})
+        } catch {
             setUserInfo({})
         } finally {
             setLoading(false)
@@ -31,7 +30,25 @@ export const UserContextProviver = ({ children }) => {
     }
 
     useEffect(() => {
-        checkSession()
+        let isMounted = true
+
+        getProfileService()
+            .then((userData) => {
+                if (isMounted) {
+                    setUserInfo(userData || {})
+                    setLoading(false)
+                }
+            })
+            .catch(() => {
+                if (isMounted) {
+                    setUserInfo({})
+                    setLoading(false)
+                }
+            })
+
+        return () => {
+            isMounted = false
+        }
     }, [])
 
     return (

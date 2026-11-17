@@ -3,18 +3,22 @@ import axios from 'axios'
 // Configuración base de axios para autenticación
 const API_URL = import.meta.env.VITE_BACKEND_URL + '/auth'
 
-// http://localhost:3000/api/auth/register
-// http://localhost:3000/api/auth/profile
-
-// Para incluir la cookies en las peticiones
-axios.defaults.withCredentials = true
+// Interceptor global de Axios para adjuntar siempre withCredentials y el token Bearer si existe
+axios.interceptors.request.use((config) => {
+    config.withCredentials = true
+    const token = localStorage.getItem('accessToken')
+    if (token) {
+        config.headers.Authorization = `Bearer ${token}`
+    }
+    return config
+})
 
 export const getProfileService = async () => {
     try {
         const response = await axios.get(`${API_URL}/profile`)
         return response.data
     } catch (error) {
-        // Si no está autenticado (400, 401, 404), retornamos null sin error 
+        // Si no está autenticado (400, 401, 404), retornamos null sin error
         if (error.response && [400, 401, 404].includes(error.response.status)) {
             return null
         }
@@ -27,8 +31,13 @@ export const loginService = async (credentials) => {
     try {
         const response = await axios.post(`${API_URL}/login`, credentials, {
             headers: { 'Content-Type': 'application/json' },
-            withCredentials: true,
         })
+
+        // Guardar token en localStorage como respaldo a las cookies
+        if (response.data?.token) {
+            localStorage.setItem('accessToken', response.data.token)
+        }
+
         return {
             success: true,
             data: response.data,
@@ -53,10 +62,14 @@ export const registerService = async (
     try {
         const response = await axios.post(`${API_URL}/register`, data, {
             headers: { 'Content-Type': 'application/json' },
-            withCredentials: true,
         })
 
         if (response.status === 201) {
+            // Guardar token en localStorage como respaldo
+            if (response.data?.token) {
+                localStorage.setItem('accessToken', response.data.token)
+            }
+
             // Verificar la sesión real del servidor después del registro
             if (checkSession) await checkSession()
             if (reset) reset()
@@ -88,6 +101,7 @@ export const registerService = async (
 
 export const logoutService = async () => {
     try {
+        localStorage.removeItem('accessToken')
         const response = await axios.post(`${API_URL}/logout`)
         return {
             success: true,
@@ -95,6 +109,7 @@ export const logoutService = async () => {
             message: response.data?.message || 'Sesión cerrada',
         }
     } catch (error) {
+        localStorage.removeItem('accessToken')
         console.error('Error al cerrar sesión:', error)
         return {
             success: false,

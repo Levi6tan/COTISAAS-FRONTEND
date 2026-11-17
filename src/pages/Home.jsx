@@ -7,7 +7,7 @@ const Home = () => {
     const { isAuthenticated, loading } = useUser()
 
     return (
-        <div className="w-full max-w-[1000px] mx-auto px-6 pb-10">
+        <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 pb-10">
             <Navbar />
             <main>
                 {loading ? (

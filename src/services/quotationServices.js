@@ -39,7 +39,7 @@ export const createQuotationService = async (data) => {
 
 export const updateQuotationService = async (id, data) => {
     try {
-        const response = await axios.patch(`${API_URL}/${id}`, data, {
+        const response = await axios.put(`${API_URL}/${id}`, data, {
             headers: getAuthHeaders(),
             withCredentials: true,
         })

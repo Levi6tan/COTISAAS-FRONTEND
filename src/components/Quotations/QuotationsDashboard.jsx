@@ -12,6 +12,7 @@ import CotiSaasLogo from '../Common/CotiSaasLogo'
 import {
     FaWhatsapp,
     FaEnvelope,
+    FaEye,
     FaEdit,
     FaTrash,
     FaBars,
@@ -67,26 +68,6 @@ const createEmptyItem = () => ({
     quantity: 1,
     unitPrice: '',
 })
-
-// Configuración de estilos y etiquetas por estado
-const STATUS_CONFIG = {
-    aprobada: {
-        label: 'Aprobada',
-        badgeClass: 'bg-emerald-50 text-emerald-800 border-emerald-200',
-    },
-    rechazada: {
-        label: 'Rechazada',
-        badgeClass: 'bg-rose-50 text-rose-800 border-rose-200',
-    },
-    pendiente: {
-        label: 'Pendiente',
-        badgeClass: 'bg-amber-50 text-amber-800 border-amber-200',
-    },
-    borrador: {
-        label: 'Borrador',
-        badgeClass: 'bg-gray-100 text-gray-700 border-gray-300',
-    },
-}
 
 const QuotationsDashboard = () => {
     const { userInfo, checkSession } = useUser()
@@ -836,7 +817,7 @@ const QuotationsDashboard = () => {
                 ) : (
                     <>
                         {/* A. VISTA TABLA PARA PC Y TABLET (md+) */}
-                        <div className="hidden md:block overflow-x-auto card-precision bg-white shadow-xs">
+                        <div className="hidden md:block overflow-x-auto card-precision bg-white shadow-xs min-h-[190px] pb-12">
                             <table className="w-full text-left text-sm text-[var(--text-main)] border-collapse">
                                 <thead className="bg-[var(--bg-subtle)] text-xs font-semibold uppercase text-[var(--text-muted)] border-b border-[var(--border-hairline)]">
                                     <tr>
@@ -853,9 +834,14 @@ const QuotationsDashboard = () => {
                                     {filteredQuotations.map((q) => (
                                         <tr key={q._id} className="hover:bg-[var(--bg-subtle)]/70 transition-colors">
                                             <td className="py-3 px-4 font-tech font-bold text-[var(--brand-navy)] whitespace-nowrap">
-                                                <span className="bg-[var(--bg-subtle)] text-[var(--brand-navy)] px-2 py-0.5 rounded-[3px] text-xs border border-[var(--border-hairline)]">
+                                                <button
+                                                    type="button"
+                                                    onClick={() => handleOpenPreview(q)}
+                                                    title="Clic para ver vista previa formal"
+                                                    className="bg-[var(--bg-subtle)] text-[var(--brand-navy)] px-2 py-0.5 rounded-[3px] text-xs border border-[var(--border-hairline)] cursor-pointer hover:bg-gray-100 transition-colors"
+                                                >
                                                     {q.quoteNumber || 'COT-SIN-NUM'}
-                                                </span>
+                                                </button>
                                             </td>
                                             <td className="py-3 px-4">
                                                 <div className="font-semibold text-[var(--text-main)] leading-snug">
@@ -929,28 +915,35 @@ const QuotationsDashboard = () => {
                                                         </button>
 
                                                         {openStatusDropdownId === q._id && (
-                                                            <div className="absolute right-0 top-full mt-1 z-40 bg-white border border-[var(--border-hairline)] rounded-[4px] shadow-md w-[148px]">
-                                                                <div className="border-b border-[var(--border-hairline)] px-3 py-2">
-                                                                    <p className="text-[10px] font-bold uppercase text-[var(--text-muted)] tracking-wider">
-                                                                        Estado
-                                                                    </p>
-                                                                </div>
-                                                                {Object.entries(STATUS_CONFIG).map(([key, cfg]) => (
-                                                                    <button
-                                                                        key={key}
-                                                                        onClick={() => handleQuickStatusChange(q, key)}
-                                                                        className={`w-full flex items-center justify-between px-3 py-2.5 text-xs text-left transition-colors cursor-pointer border-b border-[var(--border-hairline)] last:border-0 ${
-                                                                            q.status === key
-                                                                                ? 'bg-[var(--bg-subtle)] text-[var(--brand-navy)] font-bold'
-                                                                                : 'text-[var(--text-main)] hover:bg-[var(--bg-subtle)]'
-                                                                        }`}
-                                                                    >
-                                                                        <span>{cfg.label}</span>
-                                                                        {q.status === key && (
-                                                                            <FaCheck size={9} className="text-[var(--brand-navy)] shrink-0" />
-                                                                        )}
-                                                                    </button>
-                                                                ))}
+                                                            <div className="absolute right-0 top-full mt-1 z-50 bg-white border border-[var(--border-hairline)] rounded-[4px] shadow-lg w-[120px] py-1 overflow-hidden">
+                                                                <button
+                                                                    type="button"
+                                                                    onClick={() => handleQuickStatusChange(q, 'aprobada')}
+                                                                    className={`w-full flex items-center justify-between px-3 py-2 text-xs text-left transition-colors cursor-pointer hover:bg-[var(--bg-subtle)] ${
+                                                                        q.status === 'aprobada'
+                                                                            ? 'bg-emerald-50 text-emerald-800 font-bold'
+                                                                            : 'text-[var(--text-main)]'
+                                                                    }`}
+                                                                >
+                                                                    <span>Aprobada</span>
+                                                                    {q.status === 'aprobada' && (
+                                                                        <FaCheck size={9} className="text-emerald-700 shrink-0" />
+                                                                    )}
+                                                                </button>
+                                                                <button
+                                                                    type="button"
+                                                                    onClick={() => handleQuickStatusChange(q, 'rechazada')}
+                                                                    className={`w-full flex items-center justify-between px-3 py-2 text-xs text-left transition-colors cursor-pointer hover:bg-[var(--bg-subtle)] border-t border-[var(--border-hairline)] ${
+                                                                        q.status === 'rechazada'
+                                                                            ? 'bg-rose-50 text-rose-800 font-bold'
+                                                                            : 'text-[var(--text-main)]'
+                                                                    }`}
+                                                                >
+                                                                    <span>Rechazada</span>
+                                                                    {q.status === 'rechazada' && (
+                                                                        <FaCheck size={9} className="text-rose-700 shrink-0" />
+                                                                    )}
+                                                                </button>
                                                             </div>
                                                         )}
                                                     </div>
@@ -1067,28 +1060,35 @@ const QuotationsDashboard = () => {
                                                     <FaExchangeAlt size={13} />
                                                 </button>
                                                 {openStatusDropdownId === `ma-${q._id}` && (
-                                                    <div className="absolute right-0 bottom-full mb-1 z-40 bg-white border border-[var(--border-hairline)] rounded-[4px] shadow-md w-[148px]">
-                                                        <div className="border-b border-[var(--border-hairline)] px-3 py-2">
-                                                            <p className="text-[10px] font-bold uppercase text-[var(--text-muted)] tracking-wider">
-                                                                Estado
-                                                            </p>
-                                                        </div>
-                                                        {Object.entries(STATUS_CONFIG).map(([key, cfg]) => (
-                                                            <button
-                                                                key={key}
-                                                                onClick={() => handleQuickStatusChange(q, key)}
-                                                                className={`w-full flex items-center justify-between px-3 py-2.5 text-xs text-left transition-colors cursor-pointer border-b border-[var(--border-hairline)] last:border-0 ${
-                                                                    q.status === key
-                                                                        ? 'bg-[var(--bg-subtle)] text-[var(--brand-navy)] font-bold'
-                                                                        : 'text-[var(--text-main)] hover:bg-[var(--bg-subtle)]'
-                                                                }`}
-                                                            >
-                                                                <span>{cfg.label}</span>
-                                                                {q.status === key && (
-                                                                    <FaCheck size={9} className="text-[var(--brand-navy)] shrink-0" />
-                                                                )}
-                                                            </button>
-                                                        ))}
+                                                    <div className="absolute right-0 bottom-full mb-1 z-50 bg-white border border-[var(--border-hairline)] rounded-[4px] shadow-lg w-[120px] py-1 overflow-hidden">
+                                                        <button
+                                                            type="button"
+                                                            onClick={() => handleQuickStatusChange(q, 'aprobada')}
+                                                            className={`w-full flex items-center justify-between px-3 py-2 text-xs text-left transition-colors cursor-pointer hover:bg-[var(--bg-subtle)] ${
+                                                                q.status === 'aprobada'
+                                                                    ? 'bg-emerald-50 text-emerald-800 font-bold'
+                                                                    : 'text-[var(--text-main)]'
+                                                            }`}
+                                                        >
+                                                            <span>Aprobada</span>
+                                                            {q.status === 'aprobada' && (
+                                                                <FaCheck size={9} className="text-emerald-700 shrink-0" />
+                                                            )}
+                                                        </button>
+                                                        <button
+                                                            type="button"
+                                                            onClick={() => handleQuickStatusChange(q, 'rechazada')}
+                                                            className={`w-full flex items-center justify-between px-3 py-2 text-xs text-left transition-colors cursor-pointer hover:bg-[var(--bg-subtle)] border-t border-[var(--border-hairline)] ${
+                                                                q.status === 'rechazada'
+                                                                    ? 'bg-rose-50 text-rose-800 font-bold'
+                                                                    : 'text-[var(--text-main)]'
+                                                            }`}
+                                                        >
+                                                            <span>Rechazada</span>
+                                                            {q.status === 'rechazada' && (
+                                                                <FaCheck size={9} className="text-rose-700 shrink-0" />
+                                                            )}
+                                                        </button>
                                                     </div>
                                                 )}
                                             </div>

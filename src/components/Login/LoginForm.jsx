@@ -71,17 +71,9 @@ const LoginForm = () => {
 
             {/* Campo Contraseña */}
             <div>
-                <div className="flex justify-between items-center mb-1.5">
-                    <label className="block text-sm font-semibold text-[var(--text-main)]">
-                        Contraseña
-                    </label>
-                    <Link
-                        to="/forgot-password"
-                        className="text-xs text-[var(--brand-orange)] hover:underline font-medium"
-                    >
-                        ¿Olvidaste tu contraseña?
-                    </Link>
-                </div>
+                <label className="block text-sm font-semibold text-[var(--text-main)] mb-1.5">
+                    Contraseña
+                </label>
                 <div className="relative">
                     <input
                         {...register('password', {
@@ -112,6 +104,16 @@ const LoginForm = () => {
                         {errors.password.message}
                     </p>
                 )}
+            </div>
+
+            {/* Enlace de recuperación posicionado abajo de los inputs */}
+            <div className="flex justify-end">
+                <Link
+                    to="/forgot-password"
+                    className="text-xs text-[var(--brand-orange)] hover:underline font-medium transition-colors"
+                >
+                    ¿Olvidaste tu contraseña?
+                </Link>
             </div>
 
             {/* Botón de Envío Naranja Industrial */}

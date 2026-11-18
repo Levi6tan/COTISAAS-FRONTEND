@@ -11,9 +11,12 @@ function App() {
         <UserContextProvider>
             <Routes>
                 <Route path="/" element={<Home />} />
+                <Route path="/dashboard" element={<Home />} />
+                <Route path="/quotations" element={<Home />} />
                 <Route path="/register" element={<Register />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/forgot-password" element={<ForgotPassword />} />
+                <Route path="*" element={<Home />} />
             </Routes>
             <Toaster />
         </UserContextProvider>

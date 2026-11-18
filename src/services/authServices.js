@@ -118,3 +118,42 @@ export const logoutService = async () => {
         }
     }
 }
+
+export const forgotPasswordService = async (email) => {
+    try {
+        const response = await axios.post(`${API_URL}/forgot-password`, { email })
+        return {
+            success: true,
+            data: response.data,
+            message: response.data?.message || 'Cuenta verificada',
+        }
+    } catch (error) {
+        console.error('Error al solicitar recuperación de contraseña:', error)
+        return {
+            success: false,
+            data: error.response?.data,
+            message: error.response?.data?.message || 'Error al verificar el correo',
+        }
+    }
+}
+
+export const resetPasswordService = async ({ email, newPassword }) => {
+    try {
+        const response = await axios.post(`${API_URL}/reset-password`, {
+            email,
+            newPassword,
+        })
+        return {
+            success: true,
+            data: response.data,
+            message: response.data?.message || 'Contraseña actualizada',
+        }
+    } catch (error) {
+        console.error('Error al restablecer contraseña:', error)
+        return {
+            success: false,
+            data: error.response?.data,
+            message: error.response?.data?.message || 'Error al actualizar la contraseña',
+        }
+    }
+}

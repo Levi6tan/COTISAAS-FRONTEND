@@ -41,24 +41,24 @@ const RegisterForm = () => {
 
     return (
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-            {/* Campo Nombre / Usuario */}
+            {/* Campo Nombre / Asesor */}
             <div>
-                <label className="block text-xs font-semibold text-[var(--brand-navy)] mb-1">
-                    Nombres y apellidos / Asesor
+                <label className="block text-sm font-semibold text-[var(--text-main)] mb-1.5">
+                    Nombres y apellidos (Cotizador)
                 </label>
                 <input
                     {...register('username', {
                         required: 'El nombre o usuario es requerido',
                         minLength: {
-                            value: 4,
-                            message: 'Mínimo 4 caracteres',
+                            value: 3,
+                            message: 'Mínimo 3 caracteres',
                         },
                         maxLength: {
                             value: 75,
                             message: 'Máximo de 75 caracteres',
                         },
                     })}
-                    className={`input-precision p-2.5 text-xs w-full ${
+                    className={`input-precision p-3 text-sm sm:text-base w-full ${
                         errors.username ? 'border-rose-500 focus:border-rose-500' : ''
                     }`}
                     type="text"
@@ -67,7 +67,7 @@ const RegisterForm = () => {
                     autoComplete="name"
                 />
                 {errors.username && (
-                    <p className="text-rose-600 text-[11px] mt-1 font-medium">
+                    <p className="text-rose-600 text-xs mt-1 font-medium">
                         {errors.username.message}
                     </p>
                 )}
@@ -75,7 +75,7 @@ const RegisterForm = () => {
 
             {/* Campo Email */}
             <div>
-                <label className="block text-xs font-semibold text-[var(--brand-navy)] mb-1">
+                <label className="block text-sm font-semibold text-[var(--text-main)] mb-1.5">
                     Correo electrónico
                 </label>
                 <input
@@ -94,16 +94,16 @@ const RegisterForm = () => {
                             message: 'Máximo de 254 caracteres',
                         },
                     })}
-                    className={`input-precision p-2.5 text-xs w-full ${
+                    className={`input-precision p-3 text-sm sm:text-base w-full ${
                         errors.email ? 'border-rose-500 focus:border-rose-500' : ''
                     }`}
                     autoComplete="email"
                     name="email"
-                    placeholder="contacto@empresa.com"
+                    placeholder="tu-correo@empresa.com"
                     type="email"
                 />
                 {errors.email && (
-                    <p className="text-rose-600 text-[11px] mt-1 font-medium">
+                    <p className="text-rose-600 text-xs mt-1 font-medium">
                         {errors.email.message}
                     </p>
                 )}
@@ -111,7 +111,7 @@ const RegisterForm = () => {
 
             {/* Campo Contraseña */}
             <div>
-                <label className="block text-xs font-semibold text-[var(--brand-navy)] mb-1">
+                <label className="block text-sm font-semibold text-[var(--text-main)] mb-1.5">
                     Contraseña
                 </label>
                 <div className="relative">
@@ -127,7 +127,7 @@ const RegisterForm = () => {
                                 message: 'Máximo 254 caracteres',
                             },
                         })}
-                        className={`input-precision p-2.5 text-xs w-full pr-10 ${
+                        className={`input-precision p-3 text-sm sm:text-base w-full pr-11 ${
                             errors.password ? 'border-rose-500 focus:border-rose-500' : ''
                         }`}
                         type={showPassword ? 'text' : 'password'}
@@ -138,13 +138,13 @@ const RegisterForm = () => {
                         onClick={() => setShowPassword((prev) => !prev)}
                         aria-label={showPassword ? 'Ocultar contraseña' : 'Mostrar contraseña'}
                         type="button"
-                        className="absolute right-3 top-1/2 -translate-y-1/2 text-[var(--text-muted)] hover:text-[var(--brand-navy)] transition-colors p-1"
+                        className="absolute right-3 top-1/2 -translate-y-1/2 text-[var(--text-muted)] hover:text-[var(--text-main)] transition-colors p-1"
                     >
-                        {showPassword ? <FaEyeSlash size={16} /> : <FaEye size={16} />}
+                        {showPassword ? <FaEyeSlash size={18} /> : <FaEye size={18} />}
                     </button>
                 </div>
                 {errors.password && (
-                    <p className="text-rose-600 text-[11px] mt-1 font-medium">
+                    <p className="text-rose-600 text-xs mt-1 font-medium">
                         {errors.password.message}
                     </p>
                 )}
@@ -154,7 +154,7 @@ const RegisterForm = () => {
             <div className="pt-2">
                 <button
                     disabled={isSubmitting}
-                    className="btn-precision-orange w-full py-2.5 text-xs tracking-wide uppercase font-bold shadow-xs cursor-pointer disabled:opacity-50"
+                    className="btn-precision-orange w-full py-2.5 text-sm font-bold shadow-xs cursor-pointer disabled:opacity-50"
                     type="submit"
                 >
                     {isSubmitting ? 'Creando cuenta...' : 'Crear mi cuenta'}
@@ -162,7 +162,7 @@ const RegisterForm = () => {
             </div>
 
             <div className="pt-2 text-center border-t border-[var(--border-hairline)]">
-                <p className="text-xs text-[var(--text-muted)]">
+                <p className="text-xs sm:text-sm text-[var(--text-muted)]">
                     ¿Ya tienes una cuenta?{' '}
                     <Link
                         to="/login"

@@ -40,7 +40,7 @@ const LoginForm = () => {
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
             {/* Campo Email */}
             <div>
-                <label className="block text-xs font-semibold text-[var(--brand-navy)] mb-1">
+                <label className="block text-sm font-semibold text-[var(--text-main)] mb-1.5">
                     Correo electrónico
                 </label>
                 <input
@@ -55,15 +55,15 @@ const LoginForm = () => {
                             message: 'Mínimo 6 caracteres',
                         },
                     })}
-                    className={`input-precision p-2.5 text-xs w-full ${
+                    className={`input-precision p-3 text-sm sm:text-base w-full ${
                         errors.email ? 'border-rose-500 focus:border-rose-500' : ''
                     }`}
                     autoComplete="email"
-                    placeholder="ejemplo@empresa.com"
+                    placeholder="tu-correo@empresa.com"
                     type="email"
                 />
                 {errors.email && (
-                    <p className="text-rose-600 text-[11px] mt-1 font-medium">
+                    <p className="text-rose-600 text-xs mt-1 font-medium">
                         {errors.email.message}
                     </p>
                 )}
@@ -71,10 +71,16 @@ const LoginForm = () => {
 
             {/* Campo Contraseña */}
             <div>
-                <div className="flex justify-between items-center mb-1">
-                    <label className="block text-xs font-semibold text-[var(--brand-navy)]">
+                <div className="flex justify-between items-center mb-1.5">
+                    <label className="block text-sm font-semibold text-[var(--text-main)]">
                         Contraseña
                     </label>
+                    <Link
+                        to="/forgot-password"
+                        className="text-xs text-[var(--brand-orange)] hover:underline font-medium"
+                    >
+                        ¿Olvidaste tu contraseña?
+                    </Link>
                 </div>
                 <div className="relative">
                     <input
@@ -85,7 +91,7 @@ const LoginForm = () => {
                                 message: 'Mínimo 6 caracteres',
                             },
                         })}
-                        className={`input-precision p-2.5 text-xs w-full pr-10 ${
+                        className={`input-precision p-3 text-sm sm:text-base w-full pr-11 ${
                             errors.password ? 'border-rose-500 focus:border-rose-500' : ''
                         }`}
                         type={showPassword ? 'text' : 'password'}
@@ -96,13 +102,13 @@ const LoginForm = () => {
                         onClick={() => setShowPassword((prev) => !prev)}
                         aria-label={showPassword ? 'Ocultar contraseña' : 'Mostrar contraseña'}
                         type="button"
-                        className="absolute right-3 top-1/2 -translate-y-1/2 text-[var(--text-muted)] hover:text-[var(--brand-navy)] transition-colors p-1"
+                        className="absolute right-3 top-1/2 -translate-y-1/2 text-[var(--text-muted)] hover:text-[var(--text-main)] transition-colors p-1"
                     >
-                        {showPassword ? <FaEyeSlash size={16} /> : <FaEye size={16} />}
+                        {showPassword ? <FaEyeSlash size={18} /> : <FaEye size={18} />}
                     </button>
                 </div>
                 {errors.password && (
-                    <p className="text-rose-600 text-[11px] mt-1 font-medium">
+                    <p className="text-rose-600 text-xs mt-1 font-medium">
                         {errors.password.message}
                     </p>
                 )}
@@ -112,7 +118,7 @@ const LoginForm = () => {
             <div className="pt-2">
                 <button
                     disabled={isSubmitting}
-                    className="btn-precision-orange w-full py-2.5 text-xs tracking-wide uppercase font-bold shadow-xs cursor-pointer disabled:opacity-50"
+                    className="btn-precision-orange w-full py-2.5 text-sm font-bold shadow-xs cursor-pointer disabled:opacity-50"
                     type="submit"
                 >
                     {isSubmitting ? 'Iniciando sesión...' : 'Ingresar al sistema'}
@@ -120,7 +126,7 @@ const LoginForm = () => {
             </div>
 
             <div className="pt-2 text-center border-t border-[var(--border-hairline)]">
-                <p className="text-xs text-[var(--text-muted)]">
+                <p className="text-xs sm:text-sm text-[var(--text-muted)]">
                     ¿Aún no tienes cuenta?{' '}
                     <Link
                         to="/register"

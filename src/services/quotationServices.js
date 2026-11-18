@@ -62,3 +62,20 @@ export const deleteQuotationService = async (id) => {
         throw error
     }
 }
+
+export const sendQuotationEmailService = async (id, email = '') => {
+    try {
+        const response = await axios.post(
+            `${API_URL}/${id}/send-email`,
+            { email },
+            {
+                headers: getAuthHeaders(),
+                withCredentials: true,
+            }
+        )
+        return response.data
+    } catch (error) {
+        console.error('Error al enviar cotización por correo:', error)
+        throw error
+    }
+}

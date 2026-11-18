@@ -1,20 +1,19 @@
 import { useState } from 'react'
-import { useForm } from 'react-hook-form' // valida el form en tiempo real
-import { FaEye, FaEyeSlash } from 'react-icons/fa' // Importando iconos del ojito para el pass
+import { useForm } from 'react-hook-form'
+import { FaEye, FaEyeSlash } from 'react-icons/fa'
 import { Link, Navigate } from 'react-router'
 import { loginService } from '../../services/authServices.js'
 import { useUser } from '../../context/UserContext.jsx'
 import toast from 'react-hot-toast'
 
 const LoginForm = () => {
-    // esta funcion nos devuelve un handleSubmit
     const {
         register,
         handleSubmit,
-        formState: { errors },
+        formState: { errors, isSubmitting },
         reset,
     } = useForm({
-        mode: 'onChange', // validacion en tiempo real
+        mode: 'onChange',
     })
 
     const { checkSession } = useUser()
@@ -38,14 +37,15 @@ const LoginForm = () => {
     }
 
     return (
-        <form
-            onSubmit={handleSubmit(onSubmit)}
-            className="mt-8 flex flex-col gap-4 lg:gap-6 max-w-[500px] mx-auto"
-        >
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+            {/* Campo Email */}
             <div>
+                <label className="block text-xs font-semibold text-[var(--brand-navy)] mb-1">
+                    Correo electrónico
+                </label>
                 <input
                     {...register('email', {
-                        required: 'El email es requerido',
+                        required: 'El correo electrónico es requerido',
                         pattern: {
                             value: /^(?!\.)(?!.*\.\.)([a-z0-9_'+\-.]*)[a-z0-9_+-]@([a-z0-9][a-z0-9-]*\.)+[a-z]{2,}$/,
                             message: 'Correo electrónico inválido',
@@ -54,79 +54,82 @@ const LoginForm = () => {
                             value: 6,
                             message: 'Mínimo 6 caracteres',
                         },
-                        maxLength: {
-                            value: 254,
-                            message: 'Máximo de 254 caracteres',
-                        },
                     })}
-                    className={`p-2 rounded border focus:outline-Neutral w-full ${
-                        errors.email
-                            ? 'border-red-500 outline-red-500 focus:outline-red-500'
-                            : ''
+                    className={`input-precision p-2.5 text-xs w-full ${
+                        errors.email ? 'border-rose-500 focus:border-rose-500' : ''
                     }`}
                     autoComplete="email"
-                    name="email"
-                    placeholder="Correo electronico"
+                    placeholder="ejemplo@empresa.com"
                     type="email"
                 />
                 {errors.email && (
-                    <p className="text-red-500 text-sm mt-2 ml-1">
+                    <p className="text-rose-600 text-[11px] mt-1 font-medium">
                         {errors.email.message}
                     </p>
                 )}
             </div>
-            <div className="relative">
-                <input
-                    {...register('password', {
-                        required:
-                            'La contraseña es requerida [6-20 caracteres de longitud]',
-                        minLength: {
-                            value: 6,
-                            message: 'Minimo 6 caracteres',
-                        },
-                        maxLength: {
-                            value: 254,
-                            message: 'Maximo 254 caracteres',
-                        },
-                    })}
-                    className={`p-2 rounded border focus:outline-Neutral w-full ${
-                        errors.password
-                            ? 'border-red-500 outline-red-500 focus:outline-red-500'
-                            : ''
-                    }`}
-                    type={showPassword ? 'text' : 'password'}
-                    placeholder="Contraseña"
-                    autoComplete="current-password"
-                />
-                <button
-                    onClick={() => setShowPassword((prev) => !prev)}
-                    aria-label={
-                        showPassword
-                            ? 'Ocultar contraseña'
-                            : 'Mostrar contraseña'
-                    }
-                    type="button"
-                    className="cursor-pointer absolute right-3 top-20px transform-translate-y-1/2 text-gray-600"
-                >
-                    {showPassword ? (
-                        <FaEyeSlash size={23} />
-                    ) : (
-                        <FaEye size={23} />
-                    )}
-                </button>
+
+            {/* Campo Contraseña */}
+            <div>
+                <div className="flex justify-between items-center mb-1">
+                    <label className="block text-xs font-semibold text-[var(--brand-navy)]">
+                        Contraseña
+                    </label>
+                </div>
+                <div className="relative">
+                    <input
+                        {...register('password', {
+                            required: 'La contraseña es requerida',
+                            minLength: {
+                                value: 6,
+                                message: 'Mínimo 6 caracteres',
+                            },
+                        })}
+                        className={`input-precision p-2.5 text-xs w-full pr-10 ${
+                            errors.password ? 'border-rose-500 focus:border-rose-500' : ''
+                        }`}
+                        type={showPassword ? 'text' : 'password'}
+                        placeholder="••••••••"
+                        autoComplete="current-password"
+                    />
+                    <button
+                        onClick={() => setShowPassword((prev) => !prev)}
+                        aria-label={showPassword ? 'Ocultar contraseña' : 'Mostrar contraseña'}
+                        type="button"
+                        className="absolute right-3 top-1/2 -translate-y-1/2 text-[var(--text-muted)] hover:text-[var(--brand-navy)] transition-colors p-1"
+                    >
+                        {showPassword ? <FaEyeSlash size={16} /> : <FaEye size={16} />}
+                    </button>
+                </div>
                 {errors.password && (
-                    <p className="text-red-500 text-sm mt-2 ml-1">
+                    <p className="text-rose-600 text-[11px] mt-1 font-medium">
                         {errors.password.message}
                     </p>
                 )}
             </div>
 
-            <button className="btn btn-neutral" type="submit">
-                Iniciar sesión
-            </button>
-            <Link className="btn btn-Default" to="/register">
-                Crear cuenta
-            </Link>
+            {/* Botón de Envío Naranja Industrial */}
+            <div className="pt-2">
+                <button
+                    disabled={isSubmitting}
+                    className="btn-precision-orange w-full py-2.5 text-xs tracking-wide uppercase font-bold shadow-xs cursor-pointer disabled:opacity-50"
+                    type="submit"
+                >
+                    {isSubmitting ? 'Iniciando sesión...' : 'Ingresar al sistema'}
+                </button>
+            </div>
+
+            <div className="pt-2 text-center border-t border-[var(--border-hairline)]">
+                <p className="text-xs text-[var(--text-muted)]">
+                    ¿Aún no tienes cuenta?{' '}
+                    <Link
+                        to="/register"
+                        className="font-semibold text-[var(--brand-navy)] hover:text-[var(--brand-orange)] hover:underline"
+                    >
+                        Crear una cuenta gratis
+                    </Link>
+                </p>
+            </div>
         </form>
     )
 }

@@ -6,6 +6,7 @@ import {
     deleteQuotationService,
 } from '../../services/quotationServices.js'
 import { useUser } from '../../context/UserContext.jsx'
+import CotiSaasLogo from '../Common/CotiSaasLogo'
 import toast from 'react-hot-toast'
 
 // Formateador de moneda colombiana estándar (COP)
@@ -347,24 +348,26 @@ const QuotationsDashboard = () => {
     return (
         <section className="mt-8 space-y-6">
             {/* Cabecera y botón principal */}
-            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b border-gray-200 pb-5">
+            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b border-[var(--border-hairline)] pb-5">
                 <div>
                     <div className="flex items-center gap-2">
-                        <span className="badge badge-sm badge-neutral font-semibold">B2B Colombia</span>
-                        <h2 className="text-2xl font-bold tracking-tight text-gray-900">
+                        <span className="px-2 py-0.5 rounded-[3px] bg-[var(--brand-navy)] text-[var(--bg-canvas)] font-tech text-[10px] font-bold uppercase tracking-wider">
+                            B2B Colombia
+                        </span>
+                        <h2 className="text-2xl font-bold tracking-tight text-[var(--brand-navy)]">
                             Cotizaciones Comerciales
                         </h2>
                     </div>
-                    <p className="text-sm text-gray-500 mt-1">
-                        Elabora, edita y exporta propuestas de servicios técnicos e instalaciones con normativa tributaria colombiana.
+                    <p className="text-xs sm:text-sm text-[var(--text-muted)] mt-1">
+                        Elabora, edita y formaliza propuestas de servicios técnicos e instalaciones.
                     </p>
                 </div>
                 <button
                     onClick={() => handleOpenModal()}
-                    className="btn btn-neutral btn-sm sm:btn-md shadow-xs gap-2 font-medium"
+                    className="btn-precision-orange px-4 py-2 text-xs sm:text-sm shadow-xs gap-2 inline-flex items-center cursor-pointer"
                 >
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 4v16m8-8H4" />
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M12 4v16m8-8H4" />
                     </svg>
                     Nueva Cotización
                 </button>
@@ -416,59 +419,59 @@ const QuotationsDashboard = () => {
                     </button>
                 </div>
             ) : (
-                <div className="overflow-x-auto border border-gray-200 rounded-xl shadow-xs bg-white">
-                    <table className="w-full text-left text-sm text-gray-700">
-                        <thead className="bg-gray-50/80 text-xs font-semibold uppercase text-gray-600 border-b border-gray-200">
+                <div className="overflow-x-auto card-precision shadow-xs bg-white">
+                    <table className="w-full text-left text-sm text-[var(--text-main)]">
+                        <thead className="bg-[var(--bg-elevated)] text-xs font-semibold uppercase text-[var(--text-muted)] border-b border-[var(--border-hairline)]">
                             <tr>
-                                <th className="py-3.5 px-4">Consecutivo</th>
-                                <th className="py-3.5 px-4">Cliente / Identificación</th>
-                                <th className="py-3.5 px-4">Cotizador</th>
-                                <th className="py-3.5 px-4">Total (COP)</th>
-                                <th className="py-3.5 px-4">Estado</th>
-                                <th className="py-3.5 px-4">Vencimiento</th>
-                                <th className="py-3.5 px-4 text-right">Acciones</th>
+                                <th className="py-3 px-4">Consecutivo</th>
+                                <th className="py-3 px-4">Cliente / Identificación</th>
+                                <th className="py-3 px-4">Cotizador</th>
+                                <th className="py-3 px-4">Total (COP)</th>
+                                <th className="py-3 px-4">Estado</th>
+                                <th className="py-3 px-4">Vencimiento</th>
+                                <th className="py-3 px-4 text-right">Acciones</th>
                             </tr>
                         </thead>
-                        <tbody className="divide-y divide-gray-200">
+                        <tbody className="divide-y divide-[var(--border-hairline)]">
                             {quotations.map((q) => (
-                                <tr key={q._id} className="hover:bg-gray-50/70 transition-colors">
-                                    <td className="py-3 px-4 font-mono font-bold text-gray-900 whitespace-nowrap">
-                                        <span className="bg-gray-100 text-gray-800 px-2 py-0.5 rounded text-xs border border-gray-300">
+                                <tr key={q._id} className="hover:bg-[var(--bg-canvas)]/60 transition-colors">
+                                    <td className="py-3 px-4 font-tech font-bold text-[var(--brand-navy)] whitespace-nowrap">
+                                        <span className="bg-[var(--bg-elevated)] text-[var(--brand-navy)] px-2 py-0.5 rounded-[3px] text-xs border border-[var(--border-hairline)]">
                                             {q.quoteNumber || 'COT-SIN-NUM'}
                                         </span>
                                     </td>
                                     <td className="py-3 px-4">
-                                        <div className="font-semibold text-gray-900 leading-snug">
+                                        <div className="font-semibold text-[var(--text-main)] leading-snug">
                                             {q.clientName}
                                         </div>
                                         {q.clientDocument && (
-                                            <div className="text-xs text-gray-500">
+                                            <div className="text-xs text-[var(--text-muted)] font-tech">
                                                 {q.clientDocumentType || 'NIT'}: {q.clientDocument}
                                             </div>
                                         )}
                                     </td>
-                                    <td className="py-3 px-4 text-xs text-gray-600 whitespace-nowrap">
+                                    <td className="py-3 px-4 text-xs text-[var(--text-muted)] whitespace-nowrap">
                                         {q.quoterName || 'Asesor'}
                                     </td>
-                                    <td className="py-3 px-4 whitespace-nowrap font-semibold text-gray-900">
+                                    <td className="py-3 px-4 whitespace-nowrap font-tech font-semibold text-[var(--text-main)]">
                                         {formatCOP(q.total || 0)}
                                     </td>
                                     <td className="py-3 px-4 whitespace-nowrap">
                                         <span
-                                            className={`text-xs px-2.5 py-1 rounded-full font-medium border ${
+                                            className={`text-[11px] px-2 py-0.5 rounded-[3px] font-semibold border uppercase tracking-wider ${
                                                 q.status === 'aprobada'
-                                                    ? 'bg-emerald-50 text-emerald-700 border-emerald-200'
+                                                    ? 'bg-emerald-50 text-emerald-800 border-emerald-200'
                                                     : q.status === 'rechazada'
-                                                    ? 'bg-rose-50 text-rose-700 border-rose-200'
+                                                    ? 'bg-rose-50 text-rose-800 border-rose-200'
                                                     : q.status === 'borrador'
-                                                    ? 'bg-gray-100 text-gray-700 border-gray-200'
-                                                    : 'bg-amber-50 text-amber-700 border-amber-200'
+                                                    ? 'bg-gray-100 text-gray-700 border-gray-300'
+                                                    : 'bg-amber-50 text-amber-800 border-amber-200'
                                             }`}
                                         >
-                                            {q.status ? q.status.charAt(0).toUpperCase() + q.status.slice(1) : 'Pendiente'}
+                                            {q.status ? q.status.toUpperCase() : 'PENDIENTE'}
                                         </span>
                                     </td>
-                                    <td className="py-3 px-4 text-xs text-gray-500 whitespace-nowrap">
+                                    <td className="py-3 px-4 text-xs text-[var(--text-muted)] font-tech whitespace-nowrap">
                                         {q.validUntil
                                             ? new Date(q.validUntil).toLocaleDateString('es-CO')
                                             : new Date(q.createdAt).toLocaleDateString('es-CO')}
@@ -476,20 +479,20 @@ const QuotationsDashboard = () => {
                                     <td className="py-3 px-4 text-right space-x-2 whitespace-nowrap">
                                         <button
                                             onClick={() => handleOpenPreview(q)}
-                                            className="text-xs px-2 py-1 rounded text-gray-700 hover:bg-gray-100 font-medium transition-colors"
+                                            className="text-xs px-2.5 py-1 rounded-[3px] text-[var(--text-main)] bg-[var(--bg-elevated)] border border-[var(--border-hairline)] hover:border-[var(--brand-slate)] font-medium transition-colors"
                                             title="Ver propuesta formal / Imprimir"
                                         >
                                             Vista Previa
                                         </button>
                                         <button
                                             onClick={() => handleOpenModal(q)}
-                                            className="text-xs px-2 py-1 rounded text-blue-600 hover:bg-blue-50 font-medium transition-colors"
+                                            className="text-xs px-2.5 py-1 rounded-[3px] text-[var(--brand-navy)] hover:bg-[var(--bg-elevated)] font-semibold transition-colors"
                                         >
                                             Editar
                                         </button>
                                         <button
                                             onClick={() => handleDelete(q._id, q.quoteNumber)}
-                                            className="text-xs px-2 py-1 rounded text-rose-600 hover:bg-rose-50 font-medium transition-colors"
+                                            className="text-xs px-2 py-1 rounded-[3px] text-rose-600 hover:bg-rose-50 font-medium transition-colors"
                                         >
                                             Eliminar
                                         </button>
@@ -503,26 +506,26 @@ const QuotationsDashboard = () => {
 
             {/* MODAL 1: FORMULARIO CREAR / EDITAR COTIZACIÓN (B2B COLOMBIA) */}
             {isModalOpen && (
-                <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-2 sm:p-4 overflow-y-auto">
-                    <div className="bg-white rounded-xl shadow-2xl w-full max-w-4xl max-h-[92vh] flex flex-col my-auto border border-gray-200">
+                <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-2 sm:p-4 overflow-y-auto">
+                    <div className="card-precision bg-white w-full max-w-4xl max-h-[92vh] flex flex-col my-auto shadow-2xl">
                         {/* Cabecera del Modal */}
-                        <div className="flex justify-between items-center px-6 py-4 border-b border-gray-200 bg-gray-50/70 rounded-t-xl">
+                        <div className="flex justify-between items-center px-6 py-4 border-b border-[var(--border-hairline)] bg-[var(--bg-elevated)] rounded-t-[6px]">
                             <div>
                                 <div className="flex items-center gap-2">
-                                    <h3 className="text-lg font-bold text-gray-900">
+                                    <h3 className="text-lg font-bold text-[var(--brand-navy)]">
                                         {editingId ? 'Editar Cotización' : 'Nueva Cotización Comercial'}
                                     </h3>
-                                    <span className="font-mono text-xs font-semibold px-2 py-0.5 rounded bg-white border border-gray-300 text-gray-800">
+                                    <span className="font-tech text-xs font-semibold px-2 py-0.5 rounded-[3px] bg-white border border-[var(--border-hairline)] text-[var(--brand-navy)]">
                                         {formData.quoteNumber || 'COT-2026-### (Automático)'}
                                     </span>
                                 </div>
-                                <p className="text-xs text-gray-500 mt-0.5">
-                                    Asesor comercial: <span className="font-medium text-gray-700">{formData.quoterName || userInfo?.username || 'Asesor'}</span>
+                                <p className="text-xs text-[var(--text-muted)] mt-0.5">
+                                    Asesor comercial: <span className="font-medium text-[var(--text-main)]">{formData.quoterName || userInfo?.username || 'Asesor'}</span>
                                 </p>
                             </div>
                             <button
                                 onClick={handleCloseModal}
-                                className="text-gray-400 hover:text-gray-700 p-1 rounded-lg text-2xl font-light leading-none"
+                                className="text-[var(--text-muted)] hover:text-[var(--brand-navy)] p-1 text-2xl font-light leading-none cursor-pointer"
                             >
                                 &times;
                             </button>
@@ -955,11 +958,11 @@ const QuotationsDashboard = () => {
                         </div>
 
                         {/* Footer con botones de acción */}
-                        <div className="flex flex-col sm:flex-row justify-between items-center gap-3 px-6 py-4 border-t border-gray-200 bg-gray-50/70 rounded-b-xl">
+                        <div className="flex flex-col sm:flex-row justify-between items-center gap-3 px-6 py-4 border-t border-[var(--border-hairline)] bg-[var(--bg-elevated)] rounded-b-[6px]">
                             <button
                                 type="button"
                                 onClick={handlePreviewFromCurrentForm}
-                                className="btn btn-sm btn-outline gap-1.5 w-full sm:w-auto"
+                                className="btn-precision-outline px-3.5 py-2 text-xs inline-flex items-center gap-1.5 w-full sm:w-auto cursor-pointer"
                             >
                                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -968,18 +971,18 @@ const QuotationsDashboard = () => {
                                 Vista Previa / PDF
                             </button>
 
-                            <div className="flex items-center gap-2 w-full sm:w-auto justify-end">
+                            <div className="flex items-center gap-2.5 w-full sm:w-auto justify-end">
                                 <button
                                     type="button"
                                     onClick={handleCloseModal}
-                                    className="btn btn-sm btn-ghost"
+                                    className="px-3 py-2 text-xs text-[var(--text-muted)] hover:text-[var(--text-main)] transition-colors cursor-pointer"
                                 >
                                     Cancelar
                                 </button>
                                 <button
                                     type="submit"
                                     form="quotationForm"
-                                    className="btn btn-sm btn-neutral px-5"
+                                    className="btn-precision-orange px-5 py-2 text-xs font-bold uppercase tracking-wider cursor-pointer shadow-xs"
                                 >
                                     {editingId ? 'Actualizar Cotización' : 'Guardar Cotización'}
                                 </button>
@@ -994,14 +997,14 @@ const QuotationsDashboard = () => {
                 <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-2 sm:p-6 overflow-y-auto print:p-0 print:bg-white">
                     <div className="bg-white rounded-xl shadow-2xl w-full max-w-3xl overflow-hidden border border-gray-200 flex flex-col max-h-[95vh] print:max-h-none print:shadow-none print:border-none">
                         {/* Barra superior no imprimible */}
-                        <div className="flex justify-between items-center px-6 py-3 border-b border-gray-200 bg-gray-100 print:hidden">
-                            <span className="text-xs font-semibold text-gray-700">
+                        <div className="flex justify-between items-center px-6 py-3 border-b border-[var(--border-hairline)] bg-[var(--bg-elevated)] print:hidden">
+                            <span className="text-xs font-semibold text-[var(--brand-navy)]">
                                 Vista Previa de Propuesta Comercial (Estándar B2B)
                             </span>
                             <div className="flex items-center gap-2">
                                 <button
                                     onClick={() => window.print()}
-                                    className="btn btn-sm btn-neutral gap-1.5"
+                                    className="btn-precision-navy px-3.5 py-1.5 text-xs inline-flex items-center gap-1.5 cursor-pointer"
                                 >
                                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
@@ -1010,7 +1013,7 @@ const QuotationsDashboard = () => {
                                 </button>
                                 <button
                                     onClick={() => setPreviewQuotation(null)}
-                                    className="btn btn-sm btn-ghost"
+                                    className="px-2.5 py-1.5 text-xs text-[var(--text-muted)] hover:text-[var(--text-main)] cursor-pointer"
                                 >
                                     Cerrar
                                 </button>
@@ -1022,10 +1025,8 @@ const QuotationsDashboard = () => {
                             {/* Membrete y Cabecera de la Propuesta */}
                             <div className="flex flex-col sm:flex-row justify-between items-start gap-4 border-b-2 border-gray-900 pb-6">
                                 <div>
-                                    <h1 className="text-2xl font-black tracking-tight text-gray-900">
-                                        COTISAAS
-                                    </h1>
-                                    <p className="text-xs text-gray-500 font-medium">
+                                    <CotiSaasLogo showTagline={true} />
+                                    <p className="text-xs text-gray-500 font-medium mt-1">
                                         Soluciones Técnicas, Redes e Instalaciones Profesionales
                                     </p>
                                     <div className="text-xs text-gray-600 mt-2 space-y-0.5">
@@ -1034,7 +1035,7 @@ const QuotationsDashboard = () => {
                                     </div>
                                 </div>
                                 <div className="sm:text-right">
-                                    <span className="inline-block bg-gray-900 text-white font-mono text-xs px-2.5 py-1 rounded font-bold">
+                                    <span className="inline-block bg-[var(--brand-navy)] text-white font-tech text-xs px-2.5 py-1 rounded-[3px] font-bold">
                                         {previewQuotation.quoteNumber || 'COT-2026-###'}
                                     </span>
                                     <div className="text-xs text-gray-600 mt-2 space-y-0.5">

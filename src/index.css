@@ -1,2 +1,107 @@
 @import 'tailwindcss';
 @plugin "daisyui";
+
+:root {
+    /* Superficies Limpias y Neutras (Blanco puro + Gris sutil, sin tonos amarillentos) */
+    --bg-canvas: #FFFFFF;
+    --bg-subtle: #F8F9FA;
+    --bg-card: #FFFFFF;
+    --bg-elevated: #F6F8FA;
+
+    /* Colores de Marca */
+    --brand-navy: #01202F;
+    --brand-slate: #2B4C65;
+    --brand-orange: #E84E1B;
+    --brand-orange-hover: #C93E12;
+
+    /* Colores Logo: Gris Plata + Dorado Premium */
+    --logo-silver: #8C959F;
+    --logo-gold: #D49B28;
+
+    /* Líneas y Textos (Carbón suave y gris neutral) */
+    --text-main: #1F2328;
+    --text-muted: #57606A;
+    --border-hairline: #EAECEF;
+
+    /* Footer Neutro Dark */
+    --footer-bg: #161B22;
+}
+
+body {
+    background-color: var(--bg-canvas);
+    color: var(--text-main);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+}
+
+/* Tipografía técnica para cifras, consecutivos y metadatos */
+.font-tech {
+    font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    font-feature-settings: "tnum" 1, "lnum" 1;
+}
+
+/* Utilidades de Geometría de Precisión B2B (Minimalista / Anti-IA) */
+.card-precision {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-hairline);
+    border-radius: 6px;
+}
+
+.input-precision {
+    background-color: #FFFFFF;
+    border: 1px solid var(--border-hairline);
+    border-radius: 4px;
+    color: var(--text-main);
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.input-precision:focus {
+    outline: none;
+    border-color: var(--brand-slate);
+    box-shadow: 0 0 0 1px var(--brand-slate);
+}
+
+.btn-precision-navy {
+    background-color: var(--brand-navy);
+    color: #FFFFFF;
+    border: 1px solid var(--brand-navy);
+    border-radius: 4px;
+    font-weight: 600;
+    transition: all 0.15s ease;
+}
+
+.btn-precision-navy:hover {
+    background-color: #032b3f;
+    border-color: #032b3f;
+}
+
+.btn-precision-orange {
+    background-color: var(--brand-orange);
+    color: #FFFFFF;
+    border: 1px solid var(--brand-orange);
+    border-radius: 4px;
+    font-weight: 600;
+    transition: all 0.15s ease;
+}
+
+.btn-precision-orange:hover {
+    background-color: var(--brand-orange-hover);
+    border-color: var(--brand-orange-hover);
+}
+
+.btn-precision-outline {
+    background-color: #FFFFFF;
+    color: var(--text-main);
+    border: 1px solid var(--border-hairline);
+    border-radius: 4px;
+    font-weight: 500;
+    transition: all 0.15s ease;
+}
+
+.btn-precision-outline:hover {
+    background-color: var(--bg-subtle);
+    border-color: #D0D7DE;
+}

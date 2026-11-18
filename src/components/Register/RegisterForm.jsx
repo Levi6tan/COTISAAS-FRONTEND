@@ -1,89 +1,86 @@
 import { useState } from 'react'
 import { useUser } from '../../context/UserContext.jsx'
-import { useForm } from 'react-hook-form' //valida el form en tiempo real
-import { FaEye, FaEyeSlash } from 'react-icons/fa' //Importando iconos del ojito para el pass
-import { Link } from 'react-router'
+import { useForm } from 'react-hook-form'
+import { FaEye, FaEyeSlash } from 'react-icons/fa'
+import { Link, Navigate } from 'react-router'
 import { registerService } from '../../services/authServices.js'
-import { Navigate } from 'react-router'
 import toast from 'react-hot-toast'
 
 const RegisterForm = () => {
-    //esta funcion nos devuelve un handleSubmit
     const {
         register,
         handleSubmit,
-        formState: { errors },
+        formState: { errors, isSubmitting },
         reset,
     } = useForm({
-        mode: 'onChange', //validacion en tiempo real
+        mode: 'onChange',
     })
 
-    const { userInfo, checkSession } = useUser()
+    const { checkSession } = useUser()
     const [showPassword, setShowPassword] = useState(false)
     const [redirect, setRedirect] = useState(false)
+
     const onSubmit = async (data) => {
-        // Registrando al usuario
         const result = await registerService(
             data,
             reset,
             setRedirect,
-            checkSession,
+            checkSession
         )
 
         if (result?.success) {
             toast.success(result.message || 'Registro exitoso')
         } else {
-            toast.error(result?.message || 'Error intente más tarde')
+            toast.error(result?.message || 'Error al registrarse')
         }
     }
 
     if (redirect) {
-        if (userInfo?.isAdmin) {
-            // llevarlo al admin cuando exista la vista
-            return <Navigate to={'/'} />
-        }
-        return <Navigate to={'/'} />
+        return <Navigate to="/" />
     }
 
     return (
-        <form
-            onSubmit={handleSubmit(onSubmit)}
-            className="mt-8 flex flex-col gap-4 lg:gap-6 max-w-[500px] mx-auto"
-        >
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+            {/* Campo Nombre / Usuario */}
             <div>
+                <label className="block text-xs font-semibold text-[var(--brand-navy)] mb-1">
+                    Nombres y apellidos / Asesor
+                </label>
                 <input
                     {...register('username', {
-                        required: 'El nombre de usuario es requerido',
+                        required: 'El nombre o usuario es requerido',
                         minLength: {
-                            value: 15,
-                            message: 'Minimo 15 caracteres',
+                            value: 4,
+                            message: 'Mínimo 4 caracteres',
                         },
                         maxLength: {
                             value: 75,
-                            message: 'Maximo de 75 caracteres',
+                            message: 'Máximo de 75 caracteres',
                         },
                     })}
-                    className={`p-2 rounded border 
-                    focus:outline-Neutral w-full ${
-                        errors.username
-                            ? 'border-red-500 outline-red-500 focus:outline-red-500'
-                            : ''
+                    className={`input-precision p-2.5 text-xs w-full ${
+                        errors.username ? 'border-rose-500 focus:border-rose-500' : ''
                     }`}
                     type="text"
-                    placeholder="Nombres y apellidos"
+                    placeholder="Ej: Carlos Mario Restrepo"
                     name="username"
-                    autoComplete="username"
+                    autoComplete="name"
                 />
                 {errors.username && (
-                    <p className="text-red-500 text-sm mt-2 ml-1">
+                    <p className="text-rose-600 text-[11px] mt-1 font-medium">
                         {errors.username.message}
                     </p>
                 )}
             </div>
+
+            {/* Campo Email */}
             <div>
+                <label className="block text-xs font-semibold text-[var(--brand-navy)] mb-1">
+                    Correo electrónico
+                </label>
                 <input
                     {...register('email', {
-                        required: 'El email es requerido',
+                        required: 'El correo electrónico es requerido',
                         pattern: {
                             value: /^(?!\.)(?!.*\.\.)([a-z0-9_'+\-.]*)[a-z0-9_+-]@([a-z0-9][a-z0-9-]*\.)+[a-z]{2,}$/,
                             message: 'Correo electrónico inválido',
@@ -97,73 +94,84 @@ const RegisterForm = () => {
                             message: 'Máximo de 254 caracteres',
                         },
                     })}
-                    className={`p-2 rounded border focus:outline-Neutral w-full ${
-                        errors.email
-                            ? 'border-red-500 outline-red-500 focus:outline-red-500'
-                            : ''
+                    className={`input-precision p-2.5 text-xs w-full ${
+                        errors.email ? 'border-rose-500 focus:border-rose-500' : ''
                     }`}
                     autoComplete="email"
                     name="email"
-                    placeholder="Correo electronico"
+                    placeholder="contacto@empresa.com"
                     type="email"
                 />
                 {errors.email && (
-                    <p className="text-red-500 text-sm mt-2 ml-1">
+                    <p className="text-rose-600 text-[11px] mt-1 font-medium">
                         {errors.email.message}
                     </p>
                 )}
             </div>
-            <div className="relative">
-                <input
-                    {...register('password', {
-                        required:
-                            'La contraseña es requerida [6-20 caracteres de longitud]',
-                        minLength: {
-                            value: 6,
-                            message: 'Minimo 6 caracteres',
-                        },
-                        maxLength: {
-                            value: 254,
-                            message: 'Maximo 254 caracteres',
-                        },
-                    })}
-                    className={`p-2 rounded border focus:outline-Neutral w-full ${
-                        errors.password
-                            ? 'border-red-500 outline-red-500 focus:outline-red-500'
-                            : ''
-                    }`}
-                    type={showPassword ? 'text' : 'password'}
-                    placeholder="Contraseña"
-                    autoComplete="current-password"
-                />
-                <button
-                    onClick={() => setShowPassword((prev) => !prev)}
-                    aria-label={
-                        showPassword
-                            ? 'Ocultar contraseña'
-                            : 'Mostrar contraseña'
-                    }
-                    type="button"
-                    className="cursor-pointer absolute right-3 top-20px transform-translate-y-1/2 text-gray-600"
-                >
-                    {showPassword ? (
-                        <FaEyeSlash size={23} />
-                    ) : (
-                        <FaEye size={23} />
-                    )}
-                </button>
+
+            {/* Campo Contraseña */}
+            <div>
+                <label className="block text-xs font-semibold text-[var(--brand-navy)] mb-1">
+                    Contraseña
+                </label>
+                <div className="relative">
+                    <input
+                        {...register('password', {
+                            required: 'La contraseña es requerida',
+                            minLength: {
+                                value: 6,
+                                message: 'Mínimo 6 caracteres',
+                            },
+                            maxLength: {
+                                value: 254,
+                                message: 'Máximo 254 caracteres',
+                            },
+                        })}
+                        className={`input-precision p-2.5 text-xs w-full pr-10 ${
+                            errors.password ? 'border-rose-500 focus:border-rose-500' : ''
+                        }`}
+                        type={showPassword ? 'text' : 'password'}
+                        placeholder="••••••••"
+                        autoComplete="new-password"
+                    />
+                    <button
+                        onClick={() => setShowPassword((prev) => !prev)}
+                        aria-label={showPassword ? 'Ocultar contraseña' : 'Mostrar contraseña'}
+                        type="button"
+                        className="absolute right-3 top-1/2 -translate-y-1/2 text-[var(--text-muted)] hover:text-[var(--brand-navy)] transition-colors p-1"
+                    >
+                        {showPassword ? <FaEyeSlash size={16} /> : <FaEye size={16} />}
+                    </button>
+                </div>
                 {errors.password && (
-                    <p className="text-red-500 text-sm mt-2 ml-1">
+                    <p className="text-rose-600 text-[11px] mt-1 font-medium">
                         {errors.password.message}
                     </p>
                 )}
             </div>
-            <button className="btn btn-neutral" type="submit">
-                Registrarse
-            </button>
-            <Link className="btn btn-Default" type="submit" to="/login">
-                Iniciar sesion
-            </Link>
+
+            {/* Botón de Registro */}
+            <div className="pt-2">
+                <button
+                    disabled={isSubmitting}
+                    className="btn-precision-orange w-full py-2.5 text-xs tracking-wide uppercase font-bold shadow-xs cursor-pointer disabled:opacity-50"
+                    type="submit"
+                >
+                    {isSubmitting ? 'Creando cuenta...' : 'Crear mi cuenta'}
+                </button>
+            </div>
+
+            <div className="pt-2 text-center border-t border-[var(--border-hairline)]">
+                <p className="text-xs text-[var(--text-muted)]">
+                    ¿Ya tienes una cuenta?{' '}
+                    <Link
+                        to="/login"
+                        className="font-semibold text-[var(--brand-navy)] hover:text-[var(--brand-orange)] hover:underline"
+                    >
+                        Inicia sesión aquí
+                    </Link>
+                </p>
+            </div>
         </form>
     )
 }

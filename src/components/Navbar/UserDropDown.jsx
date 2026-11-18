@@ -9,7 +9,7 @@ const UserDropDown = () => {
         const result = await logoutService()
         await checkSession()
         if (result?.success) {
-            toast.success('Sesión cerrada')
+            toast.success('Sesión finalizada')
         }
     }
 
@@ -18,28 +18,40 @@ const UserDropDown = () => {
             <div
                 tabIndex={0}
                 role="button"
-                className="btn btn-ghost btn-circle avatar placeholder"
+                className="flex items-center gap-2 p-1.5 rounded-[4px] border border-[var(--border-hairline)] bg-[var(--bg-card)] hover:bg-[var(--bg-elevated)] transition-colors cursor-pointer"
             >
-                <div className="bg-neutral text-neutral-content rounded-full w-10">
-                    <span className="text-xs uppercase">
-                        {userInfo?.username?.slice(0, 2) || 'US'}
-                    </span>
+                <div className="w-7 h-7 rounded-[3px] bg-[var(--brand-navy)] text-[var(--bg-canvas)] flex items-center justify-center font-tech text-xs font-bold">
+                    {userInfo?.username?.slice(0, 2).toUpperCase() || 'US'}
                 </div>
+                <span className="hidden sm:inline text-xs font-semibold text-[var(--text-main)] max-w-[120px] truncate">
+                    {userInfo?.username}
+                </span>
+                <svg
+                    className="w-3.5 h-3.5 text-[var(--text-muted)]"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+                </svg>
             </div>
             <ul
                 tabIndex={0}
-                className="menu menu-sm dropdown-content mt-3 z-10 p-2 shadow bg-base-100 rounded-box w-52"
+                className="dropdown-content mt-2 z-30 p-2 bg-[var(--bg-card)] border border-[var(--border-hairline)] rounded-[6px] shadow-sm w-56 text-xs space-y-1"
             >
-                <li className="menu-title px-4 py-2">
-                    <span className="font-semibold block truncate">
+                <li className="px-3 py-2 border-b border-[var(--border-hairline)]">
+                    <p className="font-semibold text-[var(--text-main)] truncate">
                         {userInfo?.username}
-                    </span>
-                    <span className="text-xs text-gray-500 block truncate">
+                    </p>
+                    <p className="text-[11px] text-[var(--text-muted)] truncate font-tech">
                         {userInfo?.email}
-                    </span>
+                    </p>
                 </li>
                 <li>
-                    <button onClick={handleLogout} className="text-red-500">
+                    <button
+                        onClick={handleLogout}
+                        className="w-full text-left px-3 py-2 text-rose-600 hover:bg-rose-50 rounded-[4px] font-medium transition-colors"
+                    >
                         Cerrar sesión
                     </button>
                 </li>

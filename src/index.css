@@ -105,3 +105,48 @@ body {
     background-color: var(--bg-subtle);
     border-color: #D0D7DE;
 }
+
+/* Animaciones Técnicas y Floating (Inspirado en PreventivoPro) */
+@keyframes technicalFloat {
+    0%, 100% {
+        transform: translateY(0px) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-8px) rotate(0.3deg);
+    }
+}
+
+@keyframes badgeFloat {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-5px);
+    }
+}
+
+.animate-technical-float {
+    animation: technicalFloat 7s ease-in-out infinite;
+}
+
+.animate-badge-float {
+    animation: badgeFloat 5s ease-in-out infinite;
+}
+
+.animate-badge-float-delayed {
+    animation: badgeFloat 6s ease-in-out 1.5s infinite;
+}
+
+/* Efecto de Brillo Industrial Sutil */
+.shadow-precision-glow {
+    box-shadow: 0 16px 36px -12px rgba(1, 32, 47, 0.14), 0 0 20px rgba(232, 78, 27, 0.08);
+}
+
+.shadow-precision-hover {
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.shadow-precision-hover:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px -15px rgba(1, 32, 47, 0.2), 0 0 30px rgba(232, 78, 27, 0.12);
+}

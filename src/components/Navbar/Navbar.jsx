@@ -27,10 +27,10 @@ const Navbar = () => {
                             Componentes
                         </a>
                         <a
-                            href="#funciones"
+                            href="#funcionalidades"
                             className="hover:text-[var(--text-main)] transition-colors py-1 hover:border-b-2 hover:border-[var(--brand-navy)]"
                         >
-                            Funciones
+                            Funcionalidades
                         </a>
                     </nav>
                 ) : (

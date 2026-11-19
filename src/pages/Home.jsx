@@ -31,14 +31,19 @@ const Home = () => {
                 {/* 1. HERO EN BLANCO PURO (#FFFFFF) */}
                 <section className="w-full max-w-6xl mx-auto px-4 sm:px-6 pt-12 pb-16 lg:pt-16 lg:pb-24">
                     <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
-                        {/* Columna Izquierda: Directo al título sin píldoras */}
+                        {/* Columna Izquierda: Mensaje enfocado al cotizador en campo */}
                         <div className="lg:col-span-6 space-y-6 text-left">
+                            <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-[4px] bg-[var(--bg-subtle)] border border-[var(--border-hairline)] text-xs font-tech text-[var(--brand-navy)] font-semibold">
+                                <span className="w-1.5 h-1.5 rounded-full bg-[var(--brand-orange)]"></span>
+                                COTIZACIONES TECNICAS
+                            </div>
+
                             <h1 className="text-3xl sm:text-4xl lg:text-[42px] font-extrabold tracking-tight text-[var(--text-main)] leading-[1.18]">
-                                El software de cotizaciones para tu equipo técnico
+                                Cotizaciones al instante para técnicos
                             </h1>
 
                             <p className="text-base sm:text-lg text-[var(--text-muted)] font-normal max-w-lg leading-relaxed">
-                                Equipa a tus cotizadores y técnicos para generar, enviar y cerrar presupuestos profesionales directamente a personas y clientes finales desde el celular, tablet o PC.
+                                Crea, planifica y envia prespuestos profesionales en segudos desde cualquier lugar.
                             </p>
 
                             {/* Botones de Acción */}
@@ -72,171 +77,181 @@ const Home = () => {
                                     <svg className="w-4 h-4 text-[var(--brand-navy)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
                                     </svg>
-                                    Envío directo por WhatsApp
+                                    Envío directo al correo y WhatsApp
                                 </div>
                                 <div className="flex items-center gap-1.5 font-medium">
                                     <svg className="w-4 h-4 text-[var(--brand-navy)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                                     </svg>
-                                    Propuestas formales claras
+                                    Tarifas fijadas por la empresa
                                 </div>
                             </div>
                         </div>
 
-                        {/* Columna Derecha: Maqueta Realista de Cotización a Persona Natural */}
+                        {/* Columna Derecha: Maqueta Animada con Estilo PreventivoPro */}
                         <div className="lg:col-span-6">
                             <HeroTechnicalQuotation />
                         </div>
                     </div>
                 </section>
 
-                {/* 2. COMPONENTES (FONDO GRIS ULTRA SUTIL #F8F9FA) */}
+                {/* 2. COMPONENTES (ENFOCADOS AL TRABAJO DEL COTIZADOR) */}
                 <section id="componentes" className="w-full border-t border-[var(--border-hairline)] bg-[var(--bg-subtle)] py-16">
                     <div className="w-full max-w-6xl mx-auto px-4 sm:px-6">
                         <div className="text-center max-w-2xl mx-auto mb-12 space-y-2">
-                            <span className="text-sm font-semibold tracking-wide uppercase text-[var(--brand-navy)]">
-                                Componentes del Sistema
+                            <span className="text-xs font-bold tracking-widest uppercase text-[var(--brand-navy)] font-tech">
+                                COMPONENTES
                             </span>
                             <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-[var(--text-main)]">
-                                Todo lo que tus cotizadores necesitan
+                                Todo lo que necesitas, en un solo lugar
                             </h2>
                             <p className="text-sm sm:text-base text-[var(--text-muted)]">
-                                Diseñado para empresas de instalaciones y servicios técnicos que cotizan a personas y clientes residenciales.
+                                Herramienta práctica para que cotices en minutos y en tiempo real.
                             </p>
                         </div>
 
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                             {/* Tarjeta 1 */}
-                            <div className="card-precision p-6 bg-white hover:border-[#D0D7DE] transition-colors space-y-3">
-                                <svg className="w-7 h-7 text-[var(--brand-navy)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
-                                </svg>
+                            <div className="card-precision p-6 bg-white hover:border-[#CBD5E1] transition-all space-y-3 shadow-2xs hover:shadow-xs">
+                                <div className="w-10 h-10 rounded-[4px] bg-[var(--bg-subtle)] border border-[var(--border-hairline)] flex items-center justify-center text-[var(--brand-navy)]">
+                                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+                                    </svg>
+                                </div>
                                 <h3 className="font-bold text-base text-[var(--text-main)]">
-                                    Catálogo de servicios y materiales
+                                    Catálogo ágil de servicios y materiales
                                 </h3>
                                 <p className="text-xs sm:text-sm text-[var(--text-muted)] leading-relaxed">
-                                    Tus cotizadores eligen conceptos, metrajes y mano de obra con los precios fijados por tu empresa para cotizar en segundos.
+                                    Selecciona de inmediato los conceptos técnicos, metrajes e insumos con las tarifas y mano de obra autorizadas por tu empresa.
                                 </p>
                             </div>
 
                             {/* Tarjeta 2 */}
-                            <div className="card-precision p-6 bg-white hover:border-[#D0D7DE] transition-colors space-y-3">
-                                <svg className="w-7 h-7 text-[var(--brand-navy)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                                </svg>
+                            <div className="card-precision p-6 bg-white hover:border-[#CBD5E1] transition-all space-y-3 shadow-2xs hover:shadow-xs">
+                                <div className="w-10 h-10 rounded-[4px] bg-[var(--bg-subtle)] border border-[var(--border-hairline)] flex items-center justify-center text-[var(--brand-navy)]">
+                                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                                    </svg>
+                                </div>
                                 <h3 className="font-bold text-base text-[var(--text-main)]">
-                                    Presupuestos a clientes finales
+                                    Datos del cliente particular al instante
                                 </h3>
                                 <p className="text-xs sm:text-sm text-[var(--text-muted)] leading-relaxed">
-                                    Genera cotizaciones formales con cédula (CC), teléfono y dirección del cliente, con validez y términos claros.
+                                    Registra nombre, cédula (CC), teléfono y dirección de la persona para emitir una propuesta con validez técnica y formal.
                                 </p>
                             </div>
 
                             {/* Tarjeta 3 */}
-                            <div className="card-precision p-6 bg-white hover:border-[#D0D7DE] transition-colors space-y-3">
-                                <svg className="w-7 h-7 text-[var(--brand-navy)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
-                                </svg>
+                            <div className="card-precision p-6 bg-white hover:border-[#CBD5E1] transition-all space-y-3 shadow-2xs hover:shadow-xs">
+                                <div className="w-10 h-10 rounded-[4px] bg-[var(--bg-subtle)] border border-[var(--border-hairline)] flex items-center justify-center text-[var(--brand-navy)]">
+                                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+                                    </svg>
+                                </div>
                                 <h3 className="font-bold text-base text-[var(--text-main)]">
-                                    Aprobación rápida por WhatsApp
+                                    Aprobación directa por WhatsApp y correo
                                 </h3>
                                 <p className="text-xs sm:text-sm text-[var(--text-muted)] leading-relaxed">
-                                    La persona recibe su cotización en su teléfono y la aprueba de inmediato para iniciar la instalación sin demoras.
+                                    Envía la cotización formal en PDF al WhatsApp del cliente mientras conversas con él y recibe su visto bueno de inmediato.
                                 </p>
                             </div>
                         </div>
                     </div>
                 </section>
 
-                {/* 3. FUNCIONES (SECCIÓN EN BLANCO PURO) */}
-                <section id="funciones" className="w-full py-16 lg:py-20 bg-white border-t border-[var(--border-hairline)]">
+                {/* 3. FUNCIONALIDADES (IMÁGENES CON FONDO GRIS Y DARK OVERLAY) */}
+                <section id="funcionalidades" className="w-full py-16 lg:py-20 bg-white border-t border-[var(--border-hairline)]">
                     <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 space-y-12">
                         <div className="text-center max-w-2xl mx-auto space-y-2">
-                            <span className="text-sm font-semibold tracking-wide uppercase text-[var(--brand-navy)]">
-                                Funcionalidades Clave
+                            <span className="text-xs font-bold tracking-widest uppercase text-[var(--brand-navy)] font-tech">
+                                FUNCIONALIDADES
                             </span>
                             <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-[var(--text-main)]">
-                                Herramientas de campo para cerrar más trabajos
+                                Funcionalidades diseñadas para tu día a día.
                             </h2>
                             <p className="text-sm sm:text-base text-[var(--text-muted)]">
-                                Cálculos automáticos de impuestos y entrega ágil en el sitio de trabajo.
+                                Automatizaciones que eliminan errores de cálculo y agilizan el cierre de cada servicio.
                             </p>
                         </div>
 
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                            {/* Función 1 */}
-                            <div className="card-precision p-6 bg-white flex flex-col justify-between space-y-5 hover:border-[#D0D7DE] transition-colors">
-                                <div className="bg-[var(--bg-subtle)] p-4 rounded-[4px] border border-[var(--border-hairline)] font-tech text-xs space-y-1.5">
-                                    <div className="flex justify-between text-[var(--text-muted)]">
-                                        <span>Subtotal mano de obra y materiales:</span>
-                                        <span className="text-[var(--text-main)] font-medium">$ 650.000</span>
-                                    </div>
-                                    <div className="flex justify-between text-[var(--text-muted)]">
-                                        <span>IVA (19%):</span>
-                                        <span className="text-[var(--text-main)] font-medium">$ 123.500</span>
-                                    </div>
-                                    <div className="pt-2 border-t border-[var(--border-hairline)] flex justify-between font-bold text-sm text-[var(--text-main)]">
-                                        <span>Total al cliente:</span>
-                                        <span>$ 773.500</span>
+                            {/* Funcionalidad 1: Cálculo automático de IVA */}
+                            <div className="card-precision p-5 bg-[#F8F9FA] border border-[#E5E7EB] hover:border-[#CBD5E1] transition-all duration-300 flex flex-col justify-between space-y-4 shadow-2xs hover:shadow-xs">
+                                {/* Marco de la imagen con Fondo Gris */}
+                                <div className="p-2 bg-[#EAECEF] rounded-[4px] border border-[#DCDFE4]">
+                                    <div className="relative aspect-[16/10] overflow-hidden rounded-[3px] bg-[#01202F] group">
+                                        <img
+                                            src="/images/calculoIva.jpg"
+                                            alt="Cálculo automático de IVA y totales"
+                                            className="w-full h-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105 opacity-85 group-hover:opacity-95"
+                                        />
+                                        {/* Dark Overlay con gradiente oscuro técnico */}
+                                        <div className="absolute inset-0 bg-gradient-to-t from-[#01202F]/90 via-[#01202F]/35 to-transparent"></div>
+                                        <div className="absolute bottom-2.5 left-3 right-3 flex items-center justify-between text-[11px] font-tech text-white">
+
+                                            <span className="text-amber-300 font-bold">Descuentos %</span>
+                                        </div>
                                     </div>
                                 </div>
-                                <div>
-                                    <h3 className="font-bold text-base text-[var(--text-main)] mb-1">
+                                <div className="space-y-1.5">
+                                    <h3 className="font-bold text-base text-[var(--text-main)]">
                                         Cálculo automático de IVA y totales
                                     </h3>
                                     <p className="text-xs sm:text-sm text-[var(--text-muted)] leading-relaxed">
-                                        Evita errores numéricos en la casa del cliente. CotiSaaS calcula subtotales, descuentos y valores finales al instante.
+                                        Evita errores numéricos frente al cliente. CotiSaaS liquida al instante subtotales de materiales, mano de obra, descuentos e IVA (19%) en pesos colombianos.
                                     </p>
                                 </div>
                             </div>
 
-                            {/* Función 2 */}
-                            <div className="card-precision p-6 bg-white flex flex-col justify-between space-y-5 hover:border-[#D0D7DE] transition-colors">
-                                <div className="bg-[var(--bg-subtle)] p-4 rounded-[4px] border border-[var(--border-hairline)] flex items-center justify-center gap-3 py-6">
-                                    <span className="px-3.5 py-2 bg-emerald-600 text-white rounded-[4px] text-xs font-semibold flex items-center gap-1.5 shadow-2xs">
-                                        WhatsApp directo
-                                    </span>
-                                    <span className="text-xs text-[var(--text-muted)] font-tech">+</span>
-                                    <span className="px-3.5 py-2 bg-[var(--brand-navy)] text-white rounded-[4px] text-xs font-semibold flex items-center gap-1.5 shadow-2xs">
-                                        PDF Formal
-                                    </span>
+                            {/* Funcionalidad 2: Envío por WhatsApp y correo */}
+                            <div className="card-precision p-5 bg-[#F8F9FA] border border-[#E5E7EB] hover:border-[#CBD5E1] transition-all duration-300 flex flex-col justify-between space-y-4 shadow-2xs hover:shadow-xs">
+                                <div className="p-2 bg-[#EAECEF] rounded-[4px] border border-[#DCDFE4]">
+                                    <div className="relative aspect-[16/10] overflow-hidden rounded-[3px] bg-[#01202F] group">
+                                        <img
+                                            src="/images/envioCotizacion.jpg"
+                                            alt="Envío por WhatsApp y correo"
+                                            className="w-full h-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105 opacity-85 group-hover:opacity-95"
+                                        />
+                                        {/* Dark Overlay con gradiente oscuro técnico */}
+                                        <div className="absolute inset-0 bg-gradient-to-t from-[#01202F]/90 via-[#01202F]/35 to-transparent"></div>
+                                        <div className="absolute bottom-2.5 left-3 right-3 flex items-center justify-between text-[11px] font-tech text-white">
+
+                                            <span className="text-emerald-400 font-bold">Envios</span>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div>
-                                    <h3 className="font-bold text-base text-[var(--text-main)] mb-1">
-                                        Envío por WhatsApp y correo
+                                <div className="space-y-1.5">
+                                    <h3 className="font-bold text-base text-[var(--text-main)]">
+                                        Envío formal por WhatsApp y correo
                                     </h3>
                                     <p className="text-xs sm:text-sm text-[var(--text-muted)] leading-relaxed">
-                                        El cotizador despacha la propuesta al WhatsApp del cliente con un solo clic mientras conversa con él.
+                                        Genera el PDF formal de tu propuesta y envialo por correo, en un solo click avisale a tu cliente por WhatsApp que su cotizacion esta lista para ser aprobada sin esperas.
                                     </p>
                                 </div>
                             </div>
 
-                            {/* Función 3 */}
-                            <div className="card-precision p-6 bg-white flex flex-col justify-between space-y-5 hover:border-[#D0D7DE] transition-colors">
-                                <div className="bg-[var(--bg-subtle)] p-4 rounded-[4px] border border-[var(--border-hairline)] grid grid-cols-2 gap-2 text-center text-xs font-tech">
-                                    <div className="p-2 bg-white rounded-[3px] border border-[var(--border-hairline)]">
-                                        <span className="text-[10px] text-gray-500 block uppercase">Borrador</span>
-                                        <span className="font-bold text-gray-700">3</span>
-                                    </div>
-                                    <div className="p-2 bg-white rounded-[3px] border border-[var(--border-hairline)]">
-                                        <span className="text-[10px] text-amber-600 block uppercase">Pendiente</span>
-                                        <span className="font-bold text-amber-700">5</span>
-                                    </div>
-                                    <div className="p-2 bg-white rounded-[3px] border border-[var(--border-hairline)]">
-                                        <span className="text-[10px] text-emerald-600 block uppercase">Aprobada</span>
-                                        <span className="font-bold text-emerald-700">8</span>
-                                    </div>
-                                    <div className="p-2 bg-white rounded-[3px] border border-[var(--border-hairline)]">
-                                        <span className="text-[10px] text-rose-600 block uppercase">Rechazada</span>
-                                        <span className="font-bold text-rose-700">1</span>
+                            {/* Funcionalidad 3: Seguimiento de estados */}
+                            <div className="card-precision p-5 bg-[#F8F9FA] border border-[#E5E7EB] hover:border-[#CBD5E1] transition-all duration-300 flex flex-col justify-between space-y-4 shadow-2xs hover:shadow-xs">
+                                <div className="p-2 bg-[#EAECEF] rounded-[4px] border border-[#DCDFE4]">
+                                    <div className="relative aspect-[16/10] overflow-hidden rounded-[3px] bg-[#01202F] group">
+                                        <img
+                                            src="/images/estadosCotizacion.jpg"
+                                            alt="Seguimiento de estados de cotización"
+                                            className="w-full h-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105 opacity-85 group-hover:opacity-95"
+                                        />
+                                        {/* Dark Overlay con gradiente oscuro técnico */}
+                                        <div className="absolute inset-0 bg-gradient-to-t from-[#01202F]/90 via-[#01202F]/35 to-transparent"></div>
+                                        <div className="absolute bottom-2.5 left-3 right-3 flex items-center justify-between text-[11px] font-tech text-white">
+                                            <span className="text-amber-300 font-bold">Estados</span>
+                                        </div>
                                     </div>
                                 </div>
-                                <div>
-                                    <h3 className="font-bold text-base text-[var(--text-main)] mb-1">
-                                        Seguimiento del equipo
+                                <div className="space-y-1.5">
+                                    <h3 className="font-bold text-base text-[var(--text-main)]">
+                                        Seguimiento de estados en tiempo real
                                     </h3>
                                     <p className="text-xs sm:text-sm text-[var(--text-muted)] leading-relaxed">
-                                        Ten control centralizado sobre todas las cotizaciones creadas por tus asesores técnicos.
+                                        Conoce el estado exacto de cada trabajo técnico: identifica de inmediato qué propuestas están en borrador, cuáles fueron enviadas y cuáles han sido aprobadas.
                                     </p>
                                 </div>
                             </div>
@@ -249,10 +264,10 @@ const Home = () => {
                     <div className="bg-[var(--bg-subtle)] rounded-[6px] border border-[var(--border-hairline)] p-8 sm:p-12 flex flex-col sm:flex-row items-center justify-between gap-6">
                         <div className="space-y-1.5 text-center sm:text-left">
                             <h3 className="text-2xl sm:text-3xl font-bold tracking-tight text-[var(--text-main)]">
-                                Empieza a equipar a tus cotizadores hoy
+                                Empieza a cotizar tus trabajos técnicos hoy
                             </h3>
                             <p className="text-xs sm:text-sm text-[var(--text-muted)] max-w-md">
-                                Centraliza las propuestas de tu empresa de instalaciones y ofrece una experiencia rápida a tus clientes.
+                                Crea propuestas técnicas rápidas, formales y sin errores desde cualquier dispositivo frente a tus clientes.
                             </p>
                         </div>
                         <div className="flex flex-col items-center sm:items-end gap-2 shrink-0">
@@ -265,9 +280,7 @@ const Home = () => {
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3" />
                                 </svg>
                             </Link>
-                            <span className="text-xs text-[var(--text-muted)]">
-                                Sin tarjeta de crédito • Listo para usar
-                            </span>
+
                         </div>
                     </div>
                 </section>
@@ -288,7 +301,7 @@ const Home = () => {
                                 </h4>
                                 <ul className="text-xs space-y-2">
                                     <li><a href="#componentes" className="hover:text-white transition-colors">Componentes</a></li>
-                                    <li><a href="#funciones" className="hover:text-white transition-colors">Funciones</a></li>
+                                    <li><a href="#funcionalidades" className="hover:text-white transition-colors">Funcionalidades</a></li>
                                     <li><Link to="/register" className="hover:text-white transition-colors">Empezar gratis</Link></li>
                                 </ul>
                             </div>

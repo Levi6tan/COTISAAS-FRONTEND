@@ -69,6 +69,41 @@ const createEmptyItem = () => ({
     unitPrice: '',
 })
 
+// Confirmación con el mismo estilo de avisos (toast) en lugar de window.confirm
+const confirmAction = (message, confirmLabel = 'Aceptar') =>
+    new Promise((resolve) => {
+        toast(
+            (t) => (
+                <div className="flex flex-col gap-3">
+                    <p className="text-sm text-[var(--text-main)]">{message}</p>
+                    <div className="flex justify-end gap-2">
+                        <button
+                            type="button"
+                            onClick={() => {
+                                toast.dismiss(t.id)
+                                resolve(false)
+                            }}
+                            className="px-3 py-1.5 text-xs font-semibold rounded-[4px] border border-[var(--border-hairline)] bg-white hover:bg-[var(--bg-subtle)] cursor-pointer"
+                        >
+                            Cancelar
+                        </button>
+                        <button
+                            type="button"
+                            onClick={() => {
+                                toast.dismiss(t.id)
+                                resolve(true)
+                            }}
+                            className="px-3 py-1.5 text-xs font-semibold rounded-[4px] bg-rose-600 text-white hover:bg-rose-700 cursor-pointer"
+                        >
+                            {confirmLabel}
+                        </button>
+                    </div>
+                </div>
+            ),
+            { duration: Infinity },
+        )
+    })
+
 const QuotationsDashboard = () => {
     const { userInfo, checkSession } = useUser()
     const [quotations, setQuotations] = useState([])
@@ -345,7 +380,11 @@ const QuotationsDashboard = () => {
     // Eliminar cotización
     const handleDelete = async (id, quoteNum) => {
         const label = quoteNum ? `la cotización ${quoteNum}` : 'esta cotización'
-        if (!window.confirm(`¿Seguro que deseas eliminar ${label}?`)) return
+        const confirmed = await confirmAction(
+            `¿Seguro que deseas eliminar ${label}?`,
+            'Eliminar',
+        )
+        if (!confirmed) return
 
         try {
             await deleteQuotationService(id)
@@ -424,20 +463,9 @@ const QuotationsDashboard = () => {
         try {
             const result = await sendQuotationEmailService(quotation._id, targetEmail)
             toast.success(result.message || `Cotización enviada a ${targetEmail}`, { id: toastId })
-            
+
             // Recargar para reflejar el cambio automático de estado (Borrador -> Pendiente)
             fetchQuotations(search)
-
-            // PASO 2 INMEDIATO: Preguntar si desea abrir WhatsApp con el mensaje prellenado
-            const firstName = quotation.clientName ? quotation.clientName.trim().split(' ')[0] : 'estimado cliente'
-            setTimeout(() => {
-                const wantWhatsApp = window.confirm(
-                    `Cotización enviada a ${targetEmail}.\n\n¿Deseas enviar el aviso directo a ${firstName} por WhatsApp ahora?`
-                )
-                if (wantWhatsApp) {
-                    handleSendWhatsApp({ ...quotation, clientEmail: targetEmail })
-                }
-            }, 350)
         } catch (error) {
             toast.error(error.response?.data?.message || 'Error al enviar correo', { id: toastId })
         } finally {

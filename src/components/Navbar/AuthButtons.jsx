@@ -5,7 +5,7 @@ const AuthButtons = () => {
         <div className="flex items-center gap-4 sm:gap-6">
             <Link
                 to="/login"
-                className="text-xs sm:text-sm font-medium text-[var(--text-main)] hover:text-[var(--brand-navy)] hover:underline underline-offset-4 transition-colors"
+                className="text-xs sm:text-sm font-medium text-(--text-main) hover:text-(--brand-navy) hover:underline underline-offset-4 transition-colors"
             >
                 Iniciar sesión
             </Link>

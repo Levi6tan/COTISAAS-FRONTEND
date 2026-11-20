@@ -10,8 +10,8 @@ const Home = () => {
 
     if (loading) {
         return (
-            <div className="min-h-screen bg-white flex flex-col items-center justify-center text-sm text-[var(--text-muted)]">
-                <span className="loading loading-spinner loading-md text-[var(--brand-navy)]"></span>
+            <div className="min-h-screen bg-white flex flex-col items-center justify-center text-sm text-(--text-muted)">
+                <span className="loading loading-spinner loading-md text-(--brand-navy)"></span>
                 <p className="mt-3 font-medium">Cargando CotiSaaS...</p>
             </div>
         )
@@ -24,7 +24,7 @@ const Home = () => {
 
     // Landing Page Pública (cuando no está autenticado)
     return (
-        <div className="min-h-screen bg-white text-[var(--text-main)] flex flex-col">
+        <div className="min-h-screen bg-white text-(--text-main) flex flex-col">
             <Navbar />
 
             <main className="flex-1">
@@ -33,16 +33,16 @@ const Home = () => {
                     <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
                         {/* Columna Izquierda: Mensaje enfocado al cotizador en campo */}
                         <div className="lg:col-span-6 space-y-6 text-left">
-                            <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-[4px] bg-[var(--bg-subtle)] border border-[var(--border-hairline)] text-xs font-tech text-[var(--brand-navy)] font-semibold">
-                                <span className="w-1.5 h-1.5 rounded-full bg-[var(--brand-orange)]"></span>
+                            <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-[4px] bg-(--bg-subtle) border border-(--border-hairline) text-xs font-tech text-(--brand-navy) font-semibold">
+                                <span className="w-1.5 h-1.5 rounded-full bg-(--brand-orange)"></span>
                                 COTIZACIONES TECNICAS
                             </div>
 
-                            <h1 className="text-3xl sm:text-4xl lg:text-[42px] font-extrabold tracking-tight text-[var(--text-main)] leading-[1.18]">
+                            <h1 className="text-3xl sm:text-4xl lg:text-[42px] font-extrabold tracking-tight text-(--text-main) leading-[1.18]">
                                 Cotizaciones al instante para técnicos
                             </h1>
 
-                            <p className="text-base sm:text-lg text-[var(--text-muted)] font-normal max-w-lg leading-relaxed">
+                            <p className="text-base sm:text-lg text-(--text-muted) font-normal max-w-lg leading-relaxed">
                                 Crea, planifica y envia prespuestos profesionales en segudos desde cualquier lugar.
                             </p>
 
@@ -66,21 +66,21 @@ const Home = () => {
                             </div>
 
                             {/* Indicadores de Confianza Sobrios */}
-                            <div className="pt-4 border-t border-[var(--border-hairline)] flex flex-wrap gap-6 text-xs sm:text-sm text-[var(--text-muted)]">
+                            <div className="pt-4 border-t border-(--border-hairline) flex flex-wrap gap-6 text-xs sm:text-sm text-(--text-muted)">
                                 <div className="flex items-center gap-1.5 font-medium">
-                                    <svg className="w-4 h-4 text-[var(--brand-navy)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <svg className="w-4 h-4 text-(--brand-navy)" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
                                     </svg>
                                     Cotiza en el sitio del cliente
                                 </div>
                                 <div className="flex items-center gap-1.5 font-medium">
-                                    <svg className="w-4 h-4 text-[var(--brand-navy)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <svg className="w-4 h-4 text-(--brand-navy)" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
                                     </svg>
                                     Envío directo al correo y WhatsApp
                                 </div>
                                 <div className="flex items-center gap-1.5 font-medium">
-                                    <svg className="w-4 h-4 text-[var(--brand-navy)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <svg className="w-4 h-4 text-(--brand-navy)" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                                     </svg>
                                     Tarifas fijadas por la empresa
@@ -96,16 +96,16 @@ const Home = () => {
                 </section>
 
                 {/* 2. COMPONENTES (ENFOCADOS AL TRABAJO DEL COTIZADOR) */}
-                <section id="componentes" className="w-full border-t border-[var(--border-hairline)] bg-[var(--bg-subtle)] py-16">
+                <section id="componentes" className="w-full border-t border-(--border-hairline) bg-(--bg-subtle) py-16">
                     <div className="w-full max-w-6xl mx-auto px-4 sm:px-6">
                         <div className="text-center max-w-2xl mx-auto mb-12 space-y-2">
-                            <span className="text-xs font-bold tracking-widest uppercase text-[var(--brand-navy)] font-tech">
+                            <span className="text-xs font-bold tracking-widest uppercase text-(--brand-navy) font-tech">
                                 COMPONENTES
                             </span>
-                            <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-[var(--text-main)]">
+                            <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-(--text-main)">
                                 Todo lo que necesitas, en un solo lugar
                             </h2>
-                            <p className="text-sm sm:text-base text-[var(--text-muted)]">
+                            <p className="text-sm sm:text-base text-(--text-muted)">
                                 Herramienta práctica para que cotices en minutos y en tiempo real.
                             </p>
                         </div>
@@ -113,45 +113,45 @@ const Home = () => {
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                             {/* Tarjeta 1 */}
                             <div className="card-precision p-6 bg-white hover:border-[#CBD5E1] transition-all space-y-3 shadow-2xs hover:shadow-xs">
-                                <div className="w-10 h-10 rounded-[4px] bg-[var(--bg-subtle)] border border-[var(--border-hairline)] flex items-center justify-center text-[var(--brand-navy)]">
+                                <div className="w-10 h-10 rounded-[4px] bg-(--bg-subtle) border border-(--border-hairline) flex items-center justify-center text-(--brand-navy)">
                                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
                                     </svg>
                                 </div>
-                                <h3 className="font-bold text-base text-[var(--text-main)]">
+                                <h3 className="font-bold text-base text-(--text-main)">
                                     Catálogo ágil de servicios y materiales
                                 </h3>
-                                <p className="text-xs sm:text-sm text-[var(--text-muted)] leading-relaxed">
+                                <p className="text-xs sm:text-sm text-(--text-muted) leading-relaxed">
                                     Selecciona de inmediato los conceptos técnicos, metrajes e insumos con las tarifas y mano de obra autorizadas por tu empresa.
                                 </p>
                             </div>
 
                             {/* Tarjeta 2 */}
                             <div className="card-precision p-6 bg-white hover:border-[#CBD5E1] transition-all space-y-3 shadow-2xs hover:shadow-xs">
-                                <div className="w-10 h-10 rounded-[4px] bg-[var(--bg-subtle)] border border-[var(--border-hairline)] flex items-center justify-center text-[var(--brand-navy)]">
+                                <div className="w-10 h-10 rounded-[4px] bg-(--bg-subtle) border border-(--border-hairline) flex items-center justify-center text-(--brand-navy)">
                                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                                     </svg>
                                 </div>
-                                <h3 className="font-bold text-base text-[var(--text-main)]">
+                                <h3 className="font-bold text-base text-(--text-main)">
                                     Datos del cliente particular al instante
                                 </h3>
-                                <p className="text-xs sm:text-sm text-[var(--text-muted)] leading-relaxed">
+                                <p className="text-xs sm:text-sm text-(--text-muted) leading-relaxed">
                                     Registra nombre, cédula (CC), teléfono y dirección de la persona para emitir una propuesta con validez técnica y formal.
                                 </p>
                             </div>
 
                             {/* Tarjeta 3 */}
                             <div className="card-precision p-6 bg-white hover:border-[#CBD5E1] transition-all space-y-3 shadow-2xs hover:shadow-xs">
-                                <div className="w-10 h-10 rounded-[4px] bg-[var(--bg-subtle)] border border-[var(--border-hairline)] flex items-center justify-center text-[var(--brand-navy)]">
+                                <div className="w-10 h-10 rounded-[4px] bg-(--bg-subtle) border border-(--border-hairline) flex items-center justify-center text-(--brand-navy)">
                                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
                                     </svg>
                                 </div>
-                                <h3 className="font-bold text-base text-[var(--text-main)]">
+                                <h3 className="font-bold text-base text-(--text-main)">
                                     Aprobación directa por WhatsApp y correo
                                 </h3>
-                                <p className="text-xs sm:text-sm text-[var(--text-muted)] leading-relaxed">
+                                <p className="text-xs sm:text-sm text-(--text-muted) leading-relaxed">
                                     Envía la cotización formal en PDF al WhatsApp del cliente mientras conversas con él y recibe su visto bueno de inmediato.
                                 </p>
                             </div>
@@ -160,16 +160,16 @@ const Home = () => {
                 </section>
 
                 {/* 3. FUNCIONALIDADES (IMÁGENES CON FONDO GRIS Y DARK OVERLAY) */}
-                <section id="funcionalidades" className="w-full py-16 lg:py-20 bg-white border-t border-[var(--border-hairline)]">
+                <section id="funcionalidades" className="w-full py-16 lg:py-20 bg-white border-t border-(--border-hairline)">
                     <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 space-y-12">
                         <div className="text-center max-w-2xl mx-auto space-y-2">
-                            <span className="text-xs font-bold tracking-widest uppercase text-[var(--brand-navy)] font-tech">
+                            <span className="text-xs font-bold tracking-widest uppercase text-(--brand-navy) font-tech">
                                 FUNCIONALIDADES
                             </span>
-                            <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-[var(--text-main)]">
+                            <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-(--text-main)">
                                 Funcionalidades diseñadas para tu día a día.
                             </h2>
-                            <p className="text-sm sm:text-base text-[var(--text-muted)]">
+                            <p className="text-sm sm:text-base text-(--text-muted)">
                                 Automatizaciones que eliminan errores de cálculo y agilizan el cierre de cada servicio.
                             </p>
                         </div>
@@ -194,10 +194,10 @@ const Home = () => {
                                     </div>
                                 </div>
                                 <div className="space-y-1.5">
-                                    <h3 className="font-bold text-base text-[var(--text-main)]">
+                                    <h3 className="font-bold text-base text-(--text-main)">
                                         Cálculo automático de IVA y totales
                                     </h3>
-                                    <p className="text-xs sm:text-sm text-[var(--text-muted)] leading-relaxed">
+                                    <p className="text-xs sm:text-sm text-(--text-muted) leading-relaxed">
                                         Evita errores numéricos frente al cliente. CotiSaaS liquida al instante subtotales de materiales, mano de obra, descuentos e IVA (19%) en pesos colombianos.
                                     </p>
                                 </div>
@@ -221,10 +221,10 @@ const Home = () => {
                                     </div>
                                 </div>
                                 <div className="space-y-1.5">
-                                    <h3 className="font-bold text-base text-[var(--text-main)]">
+                                    <h3 className="font-bold text-base text-(--text-main)">
                                         Envío formal por WhatsApp y correo
                                     </h3>
-                                    <p className="text-xs sm:text-sm text-[var(--text-muted)] leading-relaxed">
+                                    <p className="text-xs sm:text-sm text-(--text-muted) leading-relaxed">
                                         Genera el PDF formal de tu propuesta y envialo por correo, en un solo click avisale a tu cliente por WhatsApp que su cotizacion esta lista para ser aprobada sin esperas.
                                     </p>
                                 </div>
@@ -247,10 +247,10 @@ const Home = () => {
                                     </div>
                                 </div>
                                 <div className="space-y-1.5">
-                                    <h3 className="font-bold text-base text-[var(--text-main)]">
+                                    <h3 className="font-bold text-base text-(--text-main)">
                                         Seguimiento de estados en tiempo real
                                     </h3>
-                                    <p className="text-xs sm:text-sm text-[var(--text-muted)] leading-relaxed">
+                                    <p className="text-xs sm:text-sm text-(--text-muted) leading-relaxed">
                                         Conoce el estado exacto de cada trabajo técnico: identifica de inmediato qué propuestas están en borrador, cuáles fueron enviadas y cuáles han sido aprobadas.
                                     </p>
                                 </div>
@@ -261,12 +261,12 @@ const Home = () => {
 
                 {/* 4. BLOQUE CTA INFERIOR SUAVE (#F8F9FA) */}
                 <section className="w-full max-w-6xl mx-auto px-4 sm:px-6 py-12">
-                    <div className="bg-[var(--bg-subtle)] rounded-[6px] border border-[var(--border-hairline)] p-8 sm:p-12 flex flex-col sm:flex-row items-center justify-between gap-6">
+                    <div className="bg-(--bg-subtle) rounded-[6px] border border-(--border-hairline) p-8 sm:p-12 flex flex-col sm:flex-row items-center justify-between gap-6">
                         <div className="space-y-1.5 text-center sm:text-left">
-                            <h3 className="text-2xl sm:text-3xl font-bold tracking-tight text-[var(--text-main)]">
+                            <h3 className="text-2xl sm:text-3xl font-bold tracking-tight text-(--text-main)">
                                 Empieza a cotizar tus trabajos técnicos hoy
                             </h3>
-                            <p className="text-xs sm:text-sm text-[var(--text-muted)] max-w-md">
+                            <p className="text-xs sm:text-sm text-(--text-muted) max-w-md">
                                 Crea propuestas técnicas rápidas, formales y sin errores desde cualquier dispositivo frente a tus clientes.
                             </p>
                         </div>

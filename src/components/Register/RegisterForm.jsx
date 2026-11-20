@@ -25,7 +25,7 @@ const RegisterForm = () => {
             data,
             reset,
             setRedirect,
-            checkSession
+            checkSession,
         )
 
         if (result?.success) {
@@ -43,7 +43,7 @@ const RegisterForm = () => {
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
             {/* Campo Nombre / Asesor */}
             <div>
-                <label className="block text-sm font-semibold text-[var(--text-main)] mb-1.5">
+                <label className="block text-sm font-semibold text-(--text-main) mb-1.5">
                     Nombres y apellidos (Cotizador)
                 </label>
                 <input
@@ -59,7 +59,9 @@ const RegisterForm = () => {
                         },
                     })}
                     className={`input-precision p-3 text-sm sm:text-base w-full ${
-                        errors.username ? 'border-rose-500 focus:border-rose-500' : ''
+                        errors.username
+                            ? 'border-rose-500 focus:border-rose-500'
+                            : ''
                     }`}
                     type="text"
                     placeholder="Ej: Carlos Mario Restrepo"
@@ -75,7 +77,7 @@ const RegisterForm = () => {
 
             {/* Campo Email */}
             <div>
-                <label className="block text-sm font-semibold text-[var(--text-main)] mb-1.5">
+                <label className="block text-sm font-semibold text-(--text-main) mb-1.5">
                     Correo electrónico
                 </label>
                 <input
@@ -95,7 +97,9 @@ const RegisterForm = () => {
                         },
                     })}
                     className={`input-precision p-3 text-sm sm:text-base w-full ${
-                        errors.email ? 'border-rose-500 focus:border-rose-500' : ''
+                        errors.email
+                            ? 'border-rose-500 focus:border-rose-500'
+                            : ''
                     }`}
                     autoComplete="email"
                     name="email"
@@ -111,7 +115,7 @@ const RegisterForm = () => {
 
             {/* Campo Contraseña */}
             <div>
-                <label className="block text-sm font-semibold text-[var(--text-main)] mb-1.5">
+                <label className="block text-sm font-semibold text-(--text-main) mb-1.5">
                     Contraseña
                 </label>
                 <div className="relative">
@@ -128,7 +132,9 @@ const RegisterForm = () => {
                             },
                         })}
                         className={`input-precision p-3 text-sm sm:text-base w-full pr-11 ${
-                            errors.password ? 'border-rose-500 focus:border-rose-500' : ''
+                            errors.password
+                                ? 'border-rose-500 focus:border-rose-500'
+                                : ''
                         }`}
                         type={showPassword ? 'text' : 'password'}
                         placeholder="••••••••"
@@ -136,11 +142,19 @@ const RegisterForm = () => {
                     />
                     <button
                         onClick={() => setShowPassword((prev) => !prev)}
-                        aria-label={showPassword ? 'Ocultar contraseña' : 'Mostrar contraseña'}
+                        aria-label={
+                            showPassword
+                                ? 'Ocultar contraseña'
+                                : 'Mostrar contraseña'
+                        }
                         type="button"
-                        className="absolute right-3 top-1/2 -translate-y-1/2 text-[var(--text-muted)] hover:text-[var(--text-main)] transition-colors p-1"
+                        className="absolute right-3 top-1/2 -translate-y-1/2 text-(--text-muted) hover:text-(--text-main) transition-colors p-1"
                     >
-                        {showPassword ? <FaEyeSlash size={18} /> : <FaEye size={18} />}
+                        {showPassword ? (
+                            <FaEyeSlash size={18} />
+                        ) : (
+                            <FaEye size={18} />
+                        )}
                     </button>
                 </div>
                 {errors.password && (
@@ -161,12 +175,12 @@ const RegisterForm = () => {
                 </button>
             </div>
 
-            <div className="pt-2 text-center border-t border-[var(--border-hairline)]">
-                <p className="text-xs sm:text-sm text-[var(--text-muted)]">
+            <div className="pt-2 text-center border-t border-(--border-hairline)">
+                <p className="text-xs sm:text-sm text-(--text-muted)">
                     ¿Ya tienes una cuenta?{' '}
                     <Link
                         to="/login"
-                        className="font-semibold text-[var(--brand-navy)] hover:text-[var(--brand-orange)] hover:underline"
+                        className="font-semibold text-(--brand-navy) hover:text-(--brand-orange) hover:underline"
                     >
                         Inicia sesión aquí
                     </Link>

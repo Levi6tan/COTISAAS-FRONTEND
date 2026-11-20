@@ -4,16 +4,16 @@ import CotiSaasLogo from '../components/Common/CotiSaasLogo'
 
 const Login = () => {
     return (
-        <div className="min-h-screen bg-[var(--bg-subtle)] text-[var(--text-main)] flex flex-col justify-center py-12 sm:px-6 lg:px-8">
+        <div className="min-h-screen bg-(--bg-subtle) text-(--text-main) flex flex-col justify-center py-12 sm:px-6 lg:px-8">
             <div className="sm:mx-auto sm:w-full sm:max-w-md text-center space-y-3">
                 <Link to="/" className="inline-block hover:opacity-90 transition-opacity">
                     <CotiSaasLogo showTagline={true} />
                 </Link>
                 <div>
-                    <h2 className="text-2xl font-bold tracking-tight text-[var(--text-main)]">
+                    <h2 className="text-2xl font-bold tracking-tight text-(--text-main)">
                         Acceso a tu cuenta
                     </h2>
-                    <p className="text-xs text-[var(--text-muted)] mt-1">
+                    <p className="text-xs text-(--text-muted) mt-1">
                         Ingresa tus credenciales para gestionar tus presupuestos técnicos.
                     </p>
                 </div>
@@ -24,8 +24,8 @@ const Login = () => {
                     <LoginForm />
                 </div>
 
-                <div className="mt-6 text-center text-xs text-[var(--text-muted)]">
-                    <Link to="/" className="hover:text-[var(--text-main)] underline underline-offset-2">
+                <div className="mt-6 text-center text-xs text-(--text-muted)">
+                    <Link to="/" className="hover:text-(--text-main) underline underline-offset-2">
                         ← Volver a la página principal
                     </Link>
                 </div>

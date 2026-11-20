@@ -15,35 +15,26 @@ const CotiSaasLogo = ({
 
     return (
         <div className={`inline-flex items-center gap-2.5 select-none ${className}`}>
-            {/* Ícono Oficial: Llave Gris Plata + Rayo Dorado Premium */}
+            {/* Ícono Oficial: Llave mecánica Gris Plata + Rayo Dorado Premium */}
             <svg
                 viewBox="0 0 100 100"
-                className="w-8 h-8 shrink-0 overflow-visible"
+                className="w-8 h-8 shrink-0"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
             >
-                {/* Llave Fija Inclinada (Gris Plata) */}
-                <g transform="rotate(-38 50 50)">
-                    {/* Mango de la llave */}
-                    <path
-                        d="M44 32 L44 82 C44 85.5 46.5 88.5 50 88.5 C53.5 88.5 56 85.5 56 82 L56 32 Z"
-                        fill={wrenchColor}
-                    />
-                    {/* Orificio circular de la base */}
-                    <circle cx="50" cy="80.5" r="3.5" fill={isDark ? '#161B22' : '#FFFFFF'} />
-                    {/* Cabeza abierta de precisión */}
-                    <path
-                        d="M32 31 C32 19 40 12 50 12 C60 12 68 19 68 31 C68 36 65 40 61 42 L57 33 C57 29 54 26 50 26 C46 26 43 29 43 33 L39 42 C35 40 32 36 32 31 Z"
-                        fill={wrenchColor}
-                    />
-                </g>
+                {/* Llave mecánica diagonal (Gris Plata) */}
+                <path
+                    transform="scale(0.1953125)"
+                    d="M507.73 109.1c-2.24-9.03-13.54-12.09-20.12-5.51l-74.36 74.36-67.88-11.31-11.31-67.88 74.36-74.36c6.62-6.62 3.43-17.9-5.66-20.16-47.38-11.74-99.55.91-136.58 37.93-39.64 39.64-50.55 97.1-34.05 147.2L18.74 402.76c-24.99 24.99-24.99 65.51 0 90.5 24.99 24.99 65.51 24.99 90.5 0l213.21-213.21c50.12 16.71 107.47 5.68 147.37-34.22 37.07-37.07 49.7-89.32 37.91-136.73zM64 472c-13.25 0-24-10.75-24-24 0-13.26 10.75-24 24-24s24 10.74 24 24c0 13.25-10.75 24-24 24z"
+                    fill={wrenchColor}
+                />
 
                 {/* Rayo de Energía (Dorado Premium) */}
                 <path
-                    d="M52 14 L32 48 L49 48 L39 86 L72 44 L53 44 L64 14 Z"
+                    d="M59 33 L37 60 H50 L43 85 L68 54 H54 Z"
                     fill={goldColor}
                     stroke={isDark ? '#161B22' : '#FFFFFF'}
-                    strokeWidth="1.8"
+                    strokeWidth="2.7"
                     strokeLinejoin="round"
                 />
             </svg>

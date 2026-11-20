@@ -40,7 +40,7 @@ const LoginForm = () => {
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
             {/* Campo Email */}
             <div>
-                <label className="block text-sm font-semibold text-[var(--text-main)] mb-1.5">
+                <label className="block text-sm font-semibold text-(--text-main) mb-1.5">
                     Correo electrónico
                 </label>
                 <input
@@ -71,7 +71,7 @@ const LoginForm = () => {
 
             {/* Campo Contraseña */}
             <div>
-                <label className="block text-sm font-semibold text-[var(--text-main)] mb-1.5">
+                <label className="block text-sm font-semibold text-(--text-main) mb-1.5">
                     Contraseña
                 </label>
                 <div className="relative">
@@ -94,7 +94,7 @@ const LoginForm = () => {
                         onClick={() => setShowPassword((prev) => !prev)}
                         aria-label={showPassword ? 'Ocultar contraseña' : 'Mostrar contraseña'}
                         type="button"
-                        className="absolute right-3 top-1/2 -translate-y-1/2 text-[var(--text-muted)] hover:text-[var(--text-main)] transition-colors p-1"
+                        className="absolute right-3 top-1/2 -translate-y-1/2 text-(--text-muted) hover:text-(--text-main) transition-colors p-1"
                     >
                         {showPassword ? <FaEyeSlash size={18} /> : <FaEye size={18} />}
                     </button>
@@ -110,7 +110,7 @@ const LoginForm = () => {
             <div className="flex justify-end">
                 <Link
                     to="/forgot-password"
-                    className="text-xs text-[var(--brand-orange)] hover:underline font-medium transition-colors"
+                    className="text-xs text-(--brand-orange) hover:underline font-medium transition-colors"
                 >
                     ¿Olvidaste tu contraseña?
                 </Link>
@@ -127,12 +127,12 @@ const LoginForm = () => {
                 </button>
             </div>
 
-            <div className="pt-2 text-center border-t border-[var(--border-hairline)]">
-                <p className="text-xs sm:text-sm text-[var(--text-muted)]">
+            <div className="pt-2 text-center border-t border-(--border-hairline)">
+                <p className="text-xs sm:text-sm text-(--text-muted)">
                     ¿Aún no tienes cuenta?{' '}
                     <Link
                         to="/register"
-                        className="font-semibold text-[var(--brand-navy)] hover:text-[var(--brand-orange)] hover:underline"
+                        className="font-semibold text-(--brand-navy) hover:text-(--brand-orange) hover:underline"
                     >
                         Crear una cuenta gratis
                     </Link>

@@ -75,7 +75,7 @@ const confirmAction = (message, confirmLabel = 'Aceptar') =>
         toast(
             (t) => (
                 <div className="flex flex-col gap-3">
-                    <p className="text-sm text-[var(--text-main)]">{message}</p>
+                    <p className="text-sm text-(--text-main)">{message}</p>
                     <div className="flex justify-end gap-2">
                         <button
                             type="button"
@@ -83,7 +83,7 @@ const confirmAction = (message, confirmLabel = 'Aceptar') =>
                                 toast.dismiss(t.id)
                                 resolve(false)
                             }}
-                            className="px-3 py-1.5 text-xs font-semibold rounded-[4px] border border-[var(--border-hairline)] bg-white hover:bg-[var(--bg-subtle)] cursor-pointer"
+                            className="px-3 py-1.5 text-xs font-semibold rounded-[4px] border border-(--border-hairline) bg-white hover:bg-(--bg-subtle) cursor-pointer"
                         >
                             Cancelar
                         </button>
@@ -551,25 +551,25 @@ const QuotationsDashboard = () => {
     }
 
     return (
-        <div className="min-h-screen bg-[var(--bg-subtle)] text-[var(--text-main)] flex flex-col lg:flex-row">
+        <div className="min-h-screen bg-(--bg-subtle) text-(--text-main) flex flex-col lg:flex-row">
             {/* MENÚ LATERAL (SIDEBAR EN DESKTOP) */}
-            <aside className="hidden lg:flex w-64 bg-white border-r border-[var(--border-hairline)] flex-col justify-between shrink-0 h-screen sticky top-0 z-30 select-none">
+            <aside className="hidden lg:flex w-64 bg-white border-r border-(--border-hairline) flex-col justify-between shrink-0 h-screen sticky top-0 z-30 select-none">
                 <div className="p-5 space-y-6">
                     {/* Logo de CotiSaaS */}
-                    <div className="pb-4 border-b border-[var(--border-hairline)]">
+                    <div className="pb-4 border-b border-(--border-hairline)">
                         <CotiSaasLogo showTagline={false} />
                     </div>
 
                     {/* Identificador del Cotizador: Solo la Inicial del primer nombre */}
-                    <div className="flex items-center gap-3 p-2.5 rounded-[6px] bg-[var(--bg-subtle)] border border-[var(--border-hairline)]">
-                        <div className="w-9 h-9 rounded-full bg-[var(--brand-navy)] text-white flex items-center justify-center font-bold text-base shrink-0 shadow-2xs">
+                    <div className="flex items-center gap-3 p-2.5 rounded-[6px] bg-(--bg-subtle) border border-(--border-hairline)">
+                        <div className="w-9 h-9 rounded-full bg-(--brand-navy) text-white flex items-center justify-center font-bold text-base shrink-0 shadow-2xs">
                             {firstInitial}
                         </div>
                         <div className="min-w-0">
-                            <p className="text-xs font-bold text-[var(--text-main)] truncate">
+                            <p className="text-xs font-bold text-(--text-main) truncate">
                                 {userInfo?.username || 'Cotizador'}
                             </p>
-                            <span className="text-[11px] text-[var(--text-muted)] block truncate">
+                            <span className="text-[11px] text-(--text-muted) block truncate">
                                 Asesor Técnico
                             </span>
                         </div>
@@ -586,15 +586,15 @@ const QuotationsDashboard = () => {
 
                     {/* Menú de Navegación y Filtros de Estado */}
                     <nav className="space-y-1 text-xs">
-                        <span className="text-[10px] uppercase font-bold text-[var(--text-muted)] px-3 tracking-wider block mb-2">
+                        <span className="text-[10px] uppercase font-bold text-(--text-muted) px-3 tracking-wider block mb-2">
                             Filtros de Cotizaciones
                         </span>
                         <button
                             onClick={() => setStatusFilter('todas')}
                             className={`w-full flex items-center justify-between px-3 py-2 rounded-[4px] font-medium transition-colors cursor-pointer ${
                                 statusFilter === 'todas'
-                                    ? 'bg-[var(--brand-navy)] text-white font-semibold'
-                                    : 'text-[var(--text-main)] hover:bg-[var(--bg-subtle)]'
+                                    ? 'bg-(--brand-navy) text-white font-semibold'
+                                    : 'text-(--text-main) hover:bg-(--bg-subtle)'
                             }`}
                         >
                             <span>Todas las cotizaciones</span>
@@ -609,8 +609,8 @@ const QuotationsDashboard = () => {
                             onClick={() => setStatusFilter('pendiente')}
                             className={`w-full flex items-center justify-between px-3 py-2 rounded-[4px] font-medium transition-colors cursor-pointer ${
                                 statusFilter === 'pendiente'
-                                    ? 'bg-[var(--brand-navy)] text-white font-semibold'
-                                    : 'text-[var(--text-main)] hover:bg-[var(--bg-subtle)]'
+                                    ? 'bg-(--brand-navy) text-white font-semibold'
+                                    : 'text-(--text-main) hover:bg-(--bg-subtle)'
                             }`}
                         >
                             <span>Pendientes</span>
@@ -625,8 +625,8 @@ const QuotationsDashboard = () => {
                             onClick={() => setStatusFilter('aprobada')}
                             className={`w-full flex items-center justify-between px-3 py-2 rounded-[4px] font-medium transition-colors cursor-pointer ${
                                 statusFilter === 'aprobada'
-                                    ? 'bg-[var(--brand-navy)] text-white font-semibold'
-                                    : 'text-[var(--text-main)] hover:bg-[var(--bg-subtle)]'
+                                    ? 'bg-(--brand-navy) text-white font-semibold'
+                                    : 'text-(--text-main) hover:bg-(--bg-subtle)'
                             }`}
                         >
                             <span>Aprobadas</span>
@@ -641,8 +641,8 @@ const QuotationsDashboard = () => {
                             onClick={() => setStatusFilter('borrador')}
                             className={`w-full flex items-center justify-between px-3 py-2 rounded-[4px] font-medium transition-colors cursor-pointer ${
                                 statusFilter === 'borrador'
-                                    ? 'bg-[var(--brand-navy)] text-white font-semibold'
-                                    : 'text-[var(--text-main)] hover:bg-[var(--bg-subtle)]'
+                                    ? 'bg-(--brand-navy) text-white font-semibold'
+                                    : 'text-(--text-main) hover:bg-(--bg-subtle)'
                             }`}
                         >
                             <span>Borradores</span>
@@ -656,8 +656,8 @@ const QuotationsDashboard = () => {
                 </div>
 
                 {/* Pie del Sidebar: Cerrar sesión */}
-                <div className="p-4 border-t border-[var(--border-hairline)] space-y-2">
-                    <p className="text-[11px] text-[var(--text-muted)] truncate font-tech px-1">
+                <div className="p-4 border-t border-(--border-hairline) space-y-2">
+                    <p className="text-[11px] text-(--text-muted) truncate font-tech px-1">
                         {userInfo?.email}
                     </p>
                     <button
@@ -671,11 +671,11 @@ const QuotationsDashboard = () => {
             </aside>
 
             {/* BARRA SUPERIOR PARA MÓVIL Y TABLET (< lg) */}
-            <div className="lg:hidden bg-white border-b border-[var(--border-hairline)] px-4 py-3 flex items-center justify-between sticky top-0 z-40">
+            <div className="lg:hidden bg-white border-b border-(--border-hairline) px-4 py-3 flex items-center justify-between sticky top-0 z-40">
                 <div className="flex items-center gap-3">
                     <button
                         onClick={() => setIsMobileSidebarOpen(true)}
-                        className="p-2 text-[var(--text-main)] hover:bg-[var(--bg-subtle)] rounded-[4px] cursor-pointer"
+                        className="p-2 text-(--text-main) hover:bg-(--bg-subtle) rounded-[4px] cursor-pointer"
                         aria-label="Abrir menú"
                     >
                         <FaBars size={18} />
@@ -690,7 +690,7 @@ const QuotationsDashboard = () => {
                     >
                         <FaPlus size={14} />
                     </button>
-                    <div className="w-8 h-8 rounded-full bg-[var(--brand-navy)] text-white flex items-center justify-center font-bold text-xs">
+                    <div className="w-8 h-8 rounded-full bg-(--brand-navy) text-white flex items-center justify-center font-bold text-xs">
                         {firstInitial}
                     </div>
                 </div>
@@ -705,7 +705,7 @@ const QuotationsDashboard = () => {
                     />
                     <div className="relative w-72 max-w-[80vw] bg-white h-full flex flex-col justify-between shadow-xl z-10 p-5">
                         <div className="space-y-5">
-                            <div className="flex items-center justify-between pb-3 border-b border-[var(--border-hairline)]">
+                            <div className="flex items-center justify-between pb-3 border-b border-(--border-hairline)">
                                 <CotiSaasLogo showTagline={false} />
                                 <button
                                     onClick={() => setIsMobileSidebarOpen(false)}
@@ -715,15 +715,15 @@ const QuotationsDashboard = () => {
                                 </button>
                             </div>
 
-                            <div className="flex items-center gap-3 p-2.5 rounded-[4px] bg-[var(--bg-subtle)] border border-[var(--border-hairline)]">
-                                <div className="w-8 h-8 rounded-full bg-[var(--brand-navy)] text-white flex items-center justify-center font-bold text-sm">
+                            <div className="flex items-center gap-3 p-2.5 rounded-[4px] bg-(--bg-subtle) border border-(--border-hairline)">
+                                <div className="w-8 h-8 rounded-full bg-(--brand-navy) text-white flex items-center justify-center font-bold text-sm">
                                     {firstInitial}
                                 </div>
                                 <div className="min-w-0">
-                                    <p className="text-xs font-bold text-[var(--text-main)] truncate">
+                                    <p className="text-xs font-bold text-(--text-main) truncate">
                                         {userInfo?.username || 'Cotizador'}
                                     </p>
-                                    <span className="text-[11px] text-[var(--text-muted)] block">
+                                    <span className="text-[11px] text-(--text-muted) block">
                                         Asesor Técnico
                                     </span>
                                 </div>
@@ -738,7 +738,7 @@ const QuotationsDashboard = () => {
                             </button>
 
                             <nav className="space-y-1 text-xs">
-                                <span className="text-[10px] uppercase font-bold text-[var(--text-muted)] px-2 block mb-1">
+                                <span className="text-[10px] uppercase font-bold text-(--text-muted) px-2 block mb-1">
                                     Filtros
                                 </span>
                                 {['todas', 'pendiente', 'aprobada', 'borrador'].map((status) => (
@@ -750,8 +750,8 @@ const QuotationsDashboard = () => {
                                         }}
                                         className={`w-full flex items-center justify-between px-3 py-2 rounded-[4px] capitalize ${
                                             statusFilter === status
-                                                ? 'bg-[var(--brand-navy)] text-white font-semibold'
-                                                : 'text-[var(--text-main)] hover:bg-[var(--bg-subtle)]'
+                                                ? 'bg-(--brand-navy) text-white font-semibold'
+                                                : 'text-(--text-main) hover:bg-(--bg-subtle)'
                                         }`}
                                     >
                                         <span>{status === 'todas' ? 'Todas' : status}</span>
@@ -763,7 +763,7 @@ const QuotationsDashboard = () => {
                             </nav>
                         </div>
 
-                        <div className="pt-4 border-t border-[var(--border-hairline)]">
+                        <div className="pt-4 border-t border-(--border-hairline)">
                             <button
                                 onClick={handleLogout}
                                 className="w-full flex items-center gap-2 px-3 py-2 text-xs font-semibold text-rose-600 hover:bg-rose-50 rounded-[4px]"
@@ -779,12 +779,12 @@ const QuotationsDashboard = () => {
             {/* CONTENIDO PRINCIPAL DEL DASHBOARD */}
             <main className="flex-1 min-w-0 p-4 sm:p-6 lg:p-8 space-y-6">
                 {/* Cabecera del Panel con texto actualizado */}
-                <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b border-[var(--border-hairline)] pb-5">
+                <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b border-(--border-hairline) pb-5">
                     <div>
-                        <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-[var(--text-main)]">
+                        <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-(--text-main)">
                             Gestión de Cotizaciones
                         </h2>
-                        <p className="text-xs sm:text-sm text-[var(--text-muted)] mt-1">
+                        <p className="text-xs sm:text-sm text-(--text-muted) mt-1">
                             Crea propuestas técnicas y profesionales para tus clientes.
                         </p>
                     </div>
@@ -801,7 +801,7 @@ const QuotationsDashboard = () => {
                 {/* Barra de Búsqueda y Contador al Fondo Derecho */}
                 <div className="flex flex-col sm:flex-row justify-between items-stretch sm:items-center gap-3">
                     <div className="w-full sm:max-w-md relative">
-                        <span className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-[var(--text-muted)]">
+                        <span className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-(--text-muted)">
                             <FaSearch size={13} />
                         </span>
                         <input
@@ -814,25 +814,25 @@ const QuotationsDashboard = () => {
                     </div>
 
                     {/* Contador de registros ubicado al fondo derecho del buscador */}
-                    <div className="text-xs text-[var(--text-muted)] sm:text-right shrink-0">
-                        <span className="bg-white px-3 py-1.5 rounded-[4px] border border-[var(--border-hairline)] font-tech text-xs shadow-2xs inline-block">
-                            Total registros: <strong className="text-[var(--text-main)] font-bold">{filteredQuotations.length}</strong>
+                    <div className="text-xs text-(--text-muted) sm:text-right shrink-0">
+                        <span className="bg-white px-3 py-1.5 rounded-[4px] border border-(--border-hairline) font-tech text-xs shadow-2xs inline-block">
+                            Total registros: <strong className="text-(--text-main) font-bold">{filteredQuotations.length}</strong>
                         </span>
                     </div>
                 </div>
 
                 {/* CONTENIDO RESPONSIVE: VISTA TABLA (DESKTOP/TABLET) Y VISTA TARJETAS (MÓVIL) */}
                 {loading ? (
-                    <div className="text-center py-16 text-[var(--text-muted)] text-sm card-precision bg-white">
-                        <span className="loading loading-spinner loading-md text-[var(--brand-navy)]"></span>
+                    <div className="text-center py-16 text-(--text-muted) text-sm card-precision bg-white">
+                        <span className="loading loading-spinner loading-md text-(--brand-navy)"></span>
                         <p className="mt-2 font-medium">Cargando cotizaciones...</p>
                     </div>
                 ) : filteredQuotations.length === 0 ? (
-                    <div className="text-center py-14 border border-dashed rounded-[6px] border-[var(--border-hairline)] bg-white p-6 space-y-2">
-                        <p className="text-sm font-semibold text-[var(--text-main)]">
+                    <div className="text-center py-14 border border-dashed rounded-[6px] border-(--border-hairline) bg-white p-6 space-y-2">
+                        <p className="text-sm font-semibold text-(--text-main)">
                             No se encontraron cotizaciones
                         </p>
-                        <p className="text-xs text-[var(--text-muted)] max-w-xs mx-auto">
+                        <p className="text-xs text-(--text-muted) max-w-xs mx-auto">
                             Comienza creando tu primera propuesta técnica para enviarla a tu cliente por correo o WhatsApp.
                         </p>
                         <button
@@ -846,8 +846,8 @@ const QuotationsDashboard = () => {
                     <>
                         {/* A. VISTA TABLA PARA PC Y TABLET (md+) */}
                         <div className="hidden md:block overflow-x-auto card-precision bg-white shadow-xs min-h-[190px] pb-12">
-                            <table className="w-full text-left text-sm text-[var(--text-main)] border-collapse">
-                                <thead className="bg-[var(--bg-subtle)] text-xs font-semibold uppercase text-[var(--text-muted)] border-b border-[var(--border-hairline)]">
+                            <table className="w-full text-left text-sm text-(--text-main) border-collapse">
+                                <thead className="bg-(--bg-subtle) text-xs font-semibold uppercase text-(--text-muted) border-b border-(--border-hairline)">
                                     <tr>
                                         <th className="py-3 px-4">Consecutivo</th>
                                         <th className="py-3 px-4">Cliente / Cédula</th>
@@ -858,33 +858,33 @@ const QuotationsDashboard = () => {
                                         <th className="py-3 px-4 text-right">Acciones</th>
                                     </tr>
                                 </thead>
-                                <tbody className="divide-y divide-[var(--border-hairline)]">
+                                <tbody className="divide-y divide-(--border-hairline)">
                                     {filteredQuotations.map((q) => (
-                                        <tr key={q._id} className="hover:bg-[var(--bg-subtle)]/70 transition-colors">
-                                            <td className="py-3 px-4 font-tech font-bold text-[var(--brand-navy)] whitespace-nowrap">
+                                        <tr key={q._id} className="hover:bg-(--bg-subtle)/70 transition-colors">
+                                            <td className="py-3 px-4 font-tech font-bold text-(--brand-navy) whitespace-nowrap">
                                                 <button
                                                     type="button"
                                                     onClick={() => handleOpenPreview(q)}
                                                     title="Clic para ver vista previa formal"
-                                                    className="bg-[var(--bg-subtle)] text-[var(--brand-navy)] px-2 py-0.5 rounded-[3px] text-xs border border-[var(--border-hairline)] cursor-pointer hover:bg-gray-100 transition-colors"
+                                                    className="bg-(--bg-subtle) text-(--brand-navy) px-2 py-0.5 rounded-[3px] text-xs border border-(--border-hairline) cursor-pointer hover:bg-gray-100 transition-colors"
                                                 >
                                                     {q.quoteNumber || 'COT-SIN-NUM'}
                                                 </button>
                                             </td>
                                             <td className="py-3 px-4">
-                                                <div className="font-semibold text-[var(--text-main)] leading-snug">
+                                                <div className="font-semibold text-(--text-main) leading-snug">
                                                     {q.clientName}
                                                 </div>
                                                 {q.clientDocument && (
-                                                    <div className="text-xs text-[var(--text-muted)] font-tech">
+                                                    <div className="text-xs text-(--text-muted) font-tech">
                                                         {q.clientDocumentType || 'CC'}: {q.clientDocument}
                                                     </div>
                                                 )}
                                             </td>
-                                            <td className="py-3 px-4 text-xs text-[var(--text-muted)] whitespace-nowrap">
+                                            <td className="py-3 px-4 text-xs text-(--text-muted) whitespace-nowrap">
                                                 {q.quoterName || 'Cotizador'}
                                             </td>
-                                            <td className="py-3 px-4 whitespace-nowrap font-tech font-bold text-[var(--text-main)]">
+                                            <td className="py-3 px-4 whitespace-nowrap font-tech font-bold text-(--text-main)">
                                                 {formatCOP(q.total || 0)}
                                             </td>
                                             <td className="py-3 px-4 whitespace-nowrap">
@@ -902,7 +902,7 @@ const QuotationsDashboard = () => {
                                                     {q.status ? q.status.toUpperCase() : 'PENDIENTE'}
                                                 </span>
                                             </td>
-                                            <td className="py-3 px-4 text-xs text-[var(--text-muted)] font-tech whitespace-nowrap">
+                                            <td className="py-3 px-4 text-xs text-(--text-muted) font-tech whitespace-nowrap">
                                                 {q.validUntil
                                                     ? new Date(q.validUntil).toLocaleDateString('es-CO')
                                                     : new Date(q.createdAt).toLocaleDateString('es-CO')}
@@ -915,7 +915,7 @@ const QuotationsDashboard = () => {
                                                         onClick={() => handleSendEmail(q)}
                                                         disabled={sendingEmailId === q._id}
                                                         title="Enviar cotización por correo electrónico (PDF adjunto)"
-                                                        className="p-2 rounded-[4px] text-[var(--brand-navy)] hover:text-blue-700 hover:bg-blue-50 transition-colors cursor-pointer disabled:opacity-50"
+                                                        className="p-2 rounded-[4px] text-(--brand-navy) hover:text-blue-700 hover:bg-blue-50 transition-colors cursor-pointer disabled:opacity-50"
                                                         aria-label="Enviar por Correo"
                                                     >
                                                         <FaEnvelope size={15} />
@@ -936,21 +936,21 @@ const QuotationsDashboard = () => {
                                                         <button
                                                             onClick={() => setOpenStatusDropdownId(openStatusDropdownId === q._id ? null : q._id)}
                                                             title="Cambiar estado de la cotización"
-                                                            className="p-2 rounded-[4px] text-gray-500 hover:text-[var(--text-main)] hover:bg-gray-100 transition-colors cursor-pointer"
+                                                            className="p-2 rounded-[4px] text-gray-500 hover:text-(--text-main) hover:bg-gray-100 transition-colors cursor-pointer"
                                                             aria-label="Cambiar estado"
                                                         >
                                                             <FaExchangeAlt size={14} />
                                                         </button>
 
                                                         {openStatusDropdownId === q._id && (
-                                                            <div className="absolute right-0 top-full mt-1 z-50 bg-white border border-[var(--border-hairline)] rounded-[4px] shadow-lg w-[120px] py-1 overflow-hidden">
+                                                            <div className="absolute right-0 top-full mt-1 z-50 bg-white border border-(--border-hairline) rounded-[4px] shadow-lg w-[120px] py-1 overflow-hidden">
                                                                 <button
                                                                     type="button"
                                                                     onClick={() => handleQuickStatusChange(q, 'aprobada')}
-                                                                    className={`w-full flex items-center justify-between px-3 py-2 text-xs text-left transition-colors cursor-pointer hover:bg-[var(--bg-subtle)] ${
+                                                                    className={`w-full flex items-center justify-between px-3 py-2 text-xs text-left transition-colors cursor-pointer hover:bg-(--bg-subtle) ${
                                                                         q.status === 'aprobada'
                                                                             ? 'bg-emerald-50 text-emerald-800 font-bold'
-                                                                            : 'text-[var(--text-main)]'
+                                                                            : 'text-(--text-main)'
                                                                     }`}
                                                                 >
                                                                     <span>Aprobada</span>
@@ -961,10 +961,10 @@ const QuotationsDashboard = () => {
                                                                 <button
                                                                     type="button"
                                                                     onClick={() => handleQuickStatusChange(q, 'rechazada')}
-                                                                    className={`w-full flex items-center justify-between px-3 py-2 text-xs text-left transition-colors cursor-pointer hover:bg-[var(--bg-subtle)] border-t border-[var(--border-hairline)] ${
+                                                                    className={`w-full flex items-center justify-between px-3 py-2 text-xs text-left transition-colors cursor-pointer hover:bg-(--bg-subtle) border-t border-(--border-hairline) ${
                                                                         q.status === 'rechazada'
                                                                             ? 'bg-rose-50 text-rose-800 font-bold'
-                                                                            : 'text-[var(--text-main)]'
+                                                                            : 'text-(--text-main)'
                                                                     }`}
                                                                 >
                                                                     <span>Rechazada</span>
@@ -1008,7 +1008,7 @@ const QuotationsDashboard = () => {
                             {filteredQuotations.map((q) => (
                                 <div key={q._id} className="card-precision p-4 bg-white shadow-2xs space-y-3">
                                     <div className="flex justify-between items-start">
-                                        <span className="font-tech font-bold text-xs bg-[var(--bg-subtle)] text-[var(--brand-navy)] px-2 py-0.5 rounded-[3px] border border-[var(--border-hairline)]">
+                                        <span className="font-tech font-bold text-xs bg-(--bg-subtle) text-(--brand-navy) px-2 py-0.5 rounded-[3px] border border-(--border-hairline)">
                                             {q.quoteNumber || 'COT-SIN-NUM'}
                                         </span>
                                         {/* Badge de estado estático en móvil */}
@@ -1028,45 +1028,45 @@ const QuotationsDashboard = () => {
                                     </div>
 
                                     <div>
-                                        <h4 className="font-bold text-sm text-[var(--text-main)]">
+                                        <h4 className="font-bold text-sm text-(--text-main)">
                                             {q.clientName}
                                         </h4>
                                         {q.clientDocument && (
-                                            <p className="text-xs text-[var(--text-muted)] font-tech">
+                                            <p className="text-xs text-(--text-muted) font-tech">
                                                 {q.clientDocumentType || 'CC'}: {q.clientDocument}
                                             </p>
                                         )}
                                         {q.description && (
-                                            <p className="text-xs text-[var(--text-muted)] mt-1 line-clamp-1">
+                                            <p className="text-xs text-(--text-muted) mt-1 line-clamp-1">
                                                 {q.description}
                                             </p>
                                         )}
                                     </div>
 
-                                    <div className="flex justify-between items-baseline pt-2 border-t border-[var(--border-hairline)]">
+                                    <div className="flex justify-between items-baseline pt-2 border-t border-(--border-hairline)">
                                         <div>
-                                            <span className="text-[10px] uppercase font-bold text-[var(--text-muted)] block">
+                                            <span className="text-[10px] uppercase font-bold text-(--text-muted) block">
                                                 Total al Cliente
                                             </span>
-                                            <span className="font-tech text-base font-bold text-[var(--text-main)]">
+                                            <span className="font-tech text-base font-bold text-(--text-main)">
                                                 {formatCOP(q.total || 0)}
                                             </span>
                                         </div>
-                                        <div className="text-right text-[11px] text-[var(--text-muted)] font-tech">
+                                        <div className="text-right text-[11px] text-(--text-muted) font-tech">
                                             Vence: {q.validUntil ? new Date(q.validUntil).toLocaleDateString('es-CO') : '15 días'}
                                         </div>
                                     </div>
 
                                     {/* Íconos de acción táctiles en móvil */}
-                                    <div className="flex items-center justify-between pt-2 border-t border-[var(--border-hairline)] bg-[var(--bg-subtle)] -mx-4 -mb-4 p-2.5 rounded-b-[6px]">
-                                        <span className="text-[11px] text-[var(--text-muted)] font-medium">
+                                    <div className="flex items-center justify-between pt-2 border-t border-(--border-hairline) bg-(--bg-subtle) -mx-4 -mb-4 p-2.5 rounded-b-[6px]">
+                                        <span className="text-[11px] text-(--text-muted) font-medium">
                                             Acciones:
                                         </span>
                                         <div className="flex items-center gap-1.5">
                                             <button
                                                 onClick={() => handleSendEmail(q)}
                                                 disabled={sendingEmailId === q._id}
-                                                className="p-2 rounded-[4px] bg-blue-50 text-[var(--brand-navy)] hover:bg-blue-100"
+                                                className="p-2 rounded-[4px] bg-blue-50 text-(--brand-navy) hover:bg-blue-100"
                                                 title="Enviar por Correo"
                                             >
                                                 <FaEnvelope size={15} />
@@ -1082,20 +1082,20 @@ const QuotationsDashboard = () => {
                                             <div className="relative" ref={openStatusDropdownId === `ma-${q._id}` ? statusDropdownRef : null}>
                                                 <button
                                                     onClick={() => setOpenStatusDropdownId(openStatusDropdownId === `ma-${q._id}` ? null : `ma-${q._id}`)}
-                                                    className="p-2 rounded-[4px] bg-white text-gray-600 border border-[var(--border-hairline)] hover:bg-gray-50"
+                                                    className="p-2 rounded-[4px] bg-white text-gray-600 border border-(--border-hairline) hover:bg-gray-50"
                                                     title="Cambiar estado"
                                                 >
                                                     <FaExchangeAlt size={13} />
                                                 </button>
                                                 {openStatusDropdownId === `ma-${q._id}` && (
-                                                    <div className="absolute right-0 bottom-full mb-1 z-50 bg-white border border-[var(--border-hairline)] rounded-[4px] shadow-lg w-[120px] py-1 overflow-hidden">
+                                                    <div className="absolute right-0 bottom-full mb-1 z-50 bg-white border border-(--border-hairline) rounded-[4px] shadow-lg w-[120px] py-1 overflow-hidden">
                                                         <button
                                                             type="button"
                                                             onClick={() => handleQuickStatusChange(q, 'aprobada')}
-                                                            className={`w-full flex items-center justify-between px-3 py-2 text-xs text-left transition-colors cursor-pointer hover:bg-[var(--bg-subtle)] ${
+                                                            className={`w-full flex items-center justify-between px-3 py-2 text-xs text-left transition-colors cursor-pointer hover:bg-(--bg-subtle) ${
                                                                 q.status === 'aprobada'
                                                                     ? 'bg-emerald-50 text-emerald-800 font-bold'
-                                                                    : 'text-[var(--text-main)]'
+                                                                    : 'text-(--text-main)'
                                                             }`}
                                                         >
                                                             <span>Aprobada</span>
@@ -1106,10 +1106,10 @@ const QuotationsDashboard = () => {
                                                         <button
                                                             type="button"
                                                             onClick={() => handleQuickStatusChange(q, 'rechazada')}
-                                                            className={`w-full flex items-center justify-between px-3 py-2 text-xs text-left transition-colors cursor-pointer hover:bg-[var(--bg-subtle)] border-t border-[var(--border-hairline)] ${
+                                                            className={`w-full flex items-center justify-between px-3 py-2 text-xs text-left transition-colors cursor-pointer hover:bg-(--bg-subtle) border-t border-(--border-hairline) ${
                                                                 q.status === 'rechazada'
                                                                     ? 'bg-rose-50 text-rose-800 font-bold'
-                                                                    : 'text-[var(--text-main)]'
+                                                                    : 'text-(--text-main)'
                                                             }`}
                                                         >
                                                             <span>Rechazada</span>
@@ -1148,23 +1148,23 @@ const QuotationsDashboard = () => {
                 <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-2 sm:p-4 overflow-y-auto">
                     <div className="card-precision bg-white w-full max-w-4xl max-h-[94vh] flex flex-col my-auto shadow-2xl">
                         {/* Cabecera del Modal */}
-                        <div className="flex justify-between items-center px-4 sm:px-6 py-3.5 border-b border-[var(--border-hairline)] bg-[var(--bg-subtle)] rounded-t-[6px]">
+                        <div className="flex justify-between items-center px-4 sm:px-6 py-3.5 border-b border-(--border-hairline) bg-(--bg-subtle) rounded-t-[6px]">
                             <div>
                                 <div className="flex items-center gap-2">
-                                    <h3 className="text-base sm:text-lg font-bold text-[var(--text-main)]">
+                                    <h3 className="text-base sm:text-lg font-bold text-(--text-main)">
                                         {editingId ? 'Editar Cotización' : 'Nueva Cotización'}
                                     </h3>
-                                    <span className="font-tech text-xs font-semibold px-2 py-0.5 rounded-[3px] bg-white border border-[var(--border-hairline)] text-[var(--brand-navy)]">
+                                    <span className="font-tech text-xs font-semibold px-2 py-0.5 rounded-[3px] bg-white border border-(--border-hairline) text-(--brand-navy)">
                                         {formData.quoteNumber || 'COT-2026-###'}
                                     </span>
                                 </div>
-                                <p className="text-xs text-[var(--text-muted)] mt-0.5">
-                                    Cotizador: <span className="font-semibold text-[var(--text-main)]">{formData.quoterName || userInfo?.username || 'Cotizador'}</span>
+                                <p className="text-xs text-(--text-muted) mt-0.5">
+                                    Cotizador: <span className="font-semibold text-(--text-main)">{formData.quoterName || userInfo?.username || 'Cotizador'}</span>
                                 </p>
                             </div>
                             <button
                                 onClick={handleCloseModal}
-                                className="text-[var(--text-muted)] hover:text-[var(--text-main)] p-1 text-2xl font-light leading-none cursor-pointer"
+                                className="text-(--text-muted) hover:text-(--text-main) p-1 text-2xl font-light leading-none cursor-pointer"
                             >
                                 &times;
                             </button>
@@ -1175,16 +1175,16 @@ const QuotationsDashboard = () => {
                             <form id="quotationForm" onSubmit={handleSubmit} className="space-y-6">
                                 {/* SECCIÓN 1: DATOS DEL CLIENTE (PERSONA NATURAL / PROPIETARIO) */}
                                 <div className="space-y-3">
-                                    <div className="flex items-center gap-2 border-b border-[var(--border-hairline)] pb-1.5">
-                                        <span className="w-5 h-5 rounded-full bg-[var(--brand-navy)] text-white text-[11px] flex items-center justify-center font-bold">1</span>
-                                        <h4 className="font-semibold text-[var(--text-main)] text-xs sm:text-sm">
+                                    <div className="flex items-center gap-2 border-b border-(--border-hairline) pb-1.5">
+                                        <span className="w-5 h-5 rounded-full bg-(--brand-navy) text-white text-[11px] flex items-center justify-center font-bold">1</span>
+                                        <h4 className="font-semibold text-(--text-main) text-xs sm:text-sm">
                                             Datos del Cliente (Persona / Propietario)
                                         </h4>
                                     </div>
                                     <div className="grid grid-cols-1 sm:grid-cols-12 gap-3">
                                         {/* Tipo de Documento */}
                                         <div className="sm:col-span-3">
-                                            <label className="block text-xs font-semibold text-[var(--text-main)] mb-1">
+                                            <label className="block text-xs font-semibold text-(--text-main) mb-1">
                                                 Tipo Documento
                                             </label>
                                             <select
@@ -1204,7 +1204,7 @@ const QuotationsDashboard = () => {
 
                                         {/* Número de Cédula / Documento */}
                                         <div className="sm:col-span-4">
-                                            <label className="block text-xs font-semibold text-[var(--text-main)] mb-1">
+                                            <label className="block text-xs font-semibold text-(--text-main) mb-1">
                                                 Número de Identificación (CC / NIT)
                                             </label>
                                             <input
@@ -1220,7 +1220,7 @@ const QuotationsDashboard = () => {
 
                                         {/* Nombre de la Persona */}
                                         <div className="sm:col-span-5">
-                                            <label className="block text-xs font-semibold text-[var(--text-main)] mb-1">
+                                            <label className="block text-xs font-semibold text-(--text-main) mb-1">
                                                 Nombre Completo de la Persona *
                                             </label>
                                             <input
@@ -1237,7 +1237,7 @@ const QuotationsDashboard = () => {
 
                                         {/* Celular / WhatsApp */}
                                         <div className="sm:col-span-4">
-                                            <label className="block text-xs font-semibold text-[var(--text-main)] mb-1">
+                                            <label className="block text-xs font-semibold text-(--text-main) mb-1">
                                                 Celular / WhatsApp (Para envío)
                                             </label>
                                             <input
@@ -1253,7 +1253,7 @@ const QuotationsDashboard = () => {
 
                                         {/* Correo Electrónico */}
                                         <div className="sm:col-span-5">
-                                            <label className="block text-xs font-semibold text-[var(--text-main)] mb-1">
+                                            <label className="block text-xs font-semibold text-(--text-main) mb-1">
                                                 Correo Electrónico (Para envío PDF)
                                             </label>
                                             <input
@@ -1269,7 +1269,7 @@ const QuotationsDashboard = () => {
 
                                         {/* Estado: El cotizador puede cambiar manualmente a aprobada o rechazada */}
                                         <div className="sm:col-span-3">
-                                            <label className="block text-xs font-semibold text-[var(--text-main)] mb-1">
+                                            <label className="block text-xs font-semibold text-(--text-main) mb-1">
                                                 Estado
                                             </label>
                                             <select
@@ -1290,15 +1290,15 @@ const QuotationsDashboard = () => {
 
                                 {/* SECCIÓN 2: FECHAS Y TRABAJO A REALIZAR */}
                                 <div className="space-y-3">
-                                    <div className="flex items-center gap-2 border-b border-[var(--border-hairline)] pb-1.5">
-                                        <span className="w-5 h-5 rounded-full bg-[var(--brand-navy)] text-white text-[11px] flex items-center justify-center font-bold">2</span>
-                                        <h4 className="font-semibold text-[var(--text-main)] text-xs sm:text-sm">
+                                    <div className="flex items-center gap-2 border-b border-(--border-hairline) pb-1.5">
+                                        <span className="w-5 h-5 rounded-full bg-(--brand-navy) text-white text-[11px] flex items-center justify-center font-bold">2</span>
+                                        <h4 className="font-semibold text-(--text-main) text-xs sm:text-sm">
                                             Servicio y Plazos
                                         </h4>
                                     </div>
                                     <div className="grid grid-cols-1 sm:grid-cols-12 gap-3">
                                         <div className="sm:col-span-3">
-                                            <label className="block text-xs font-semibold text-[var(--text-main)] mb-1">
+                                            <label className="block text-xs font-semibold text-(--text-main) mb-1">
                                                 Fecha Emisión
                                             </label>
                                             <input
@@ -1311,7 +1311,7 @@ const QuotationsDashboard = () => {
                                             />
                                         </div>
                                         <div className="sm:col-span-3">
-                                            <label className="block text-xs font-semibold text-[var(--text-main)] mb-1">
+                                            <label className="block text-xs font-semibold text-(--text-main) mb-1">
                                                 Válida Hasta
                                             </label>
                                             <input
@@ -1324,7 +1324,7 @@ const QuotationsDashboard = () => {
                                             />
                                         </div>
                                         <div className="sm:col-span-6">
-                                            <label className="block text-xs font-semibold text-[var(--text-main)] mb-1">
+                                            <label className="block text-xs font-semibold text-(--text-main) mb-1">
                                                 Descripción General del Trabajo
                                             </label>
                                             <input
@@ -1342,17 +1342,17 @@ const QuotationsDashboard = () => {
 
                                 {/* SECCIÓN 3: CONCEPTOS, MATERIALES Y MANO DE OBRA */}
                                 <div className="space-y-3">
-                                    <div className="flex justify-between items-center border-b border-[var(--border-hairline)] pb-1.5">
+                                    <div className="flex justify-between items-center border-b border-(--border-hairline) pb-1.5">
                                         <div className="flex items-center gap-2">
-                                            <span className="w-5 h-5 rounded-full bg-[var(--brand-navy)] text-white text-[11px] flex items-center justify-center font-bold">3</span>
-                                            <h4 className="font-semibold text-[var(--text-main)] text-xs sm:text-sm">
+                                            <span className="w-5 h-5 rounded-full bg-(--brand-navy) text-white text-[11px] flex items-center justify-center font-bold">3</span>
+                                            <h4 className="font-semibold text-(--text-main) text-xs sm:text-sm">
                                                 Conceptos / Materiales / Mano de Obra
                                             </h4>
                                         </div>
                                         <button
                                             type="button"
                                             onClick={addItemRow}
-                                            className="text-xs text-[var(--brand-navy)] hover:underline font-bold flex items-center gap-1 cursor-pointer"
+                                            className="text-xs text-(--brand-navy) hover:underline font-bold flex items-center gap-1 cursor-pointer"
                                         >
                                             <FaPlus size={10} />
                                             Agregar Fila
@@ -1360,9 +1360,9 @@ const QuotationsDashboard = () => {
                                     </div>
 
                                     {/* Versión Desktop / Tablet: Tabla */}
-                                    <div className="hidden sm:block overflow-x-auto border border-[var(--border-hairline)] rounded-[6px]">
+                                    <div className="hidden sm:block overflow-x-auto border border-(--border-hairline) rounded-[6px]">
                                         <table className="w-full text-left text-xs">
-                                            <thead className="bg-[var(--bg-subtle)] text-[var(--text-muted)] font-semibold uppercase border-b border-[var(--border-hairline)]">
+                                            <thead className="bg-(--bg-subtle) text-(--text-muted) font-semibold uppercase border-b border-(--border-hairline)">
                                                 <tr>
                                                     <th className="p-2.5 min-w-[200px]">Descripción / Servicio</th>
                                                     <th className="p-2.5 w-24">Unidad</th>
@@ -1372,13 +1372,13 @@ const QuotationsDashboard = () => {
                                                     <th className="p-2.5 w-10 text-center"></th>
                                                 </tr>
                                             </thead>
-                                            <tbody className="divide-y divide-[var(--border-hairline)] bg-white">
+                                            <tbody className="divide-y divide-(--border-hairline) bg-white">
                                                 {formData.items.map((item, idx) => {
                                                     const rowSubtotal =
                                                         (Number(item.quantity) || 0) * (Number(item.unitPrice) || 0)
 
                                                     return (
-                                                        <tr key={idx} className="hover:bg-[var(--bg-subtle)]/50">
+                                                        <tr key={idx} className="hover:bg-(--bg-subtle)/50">
                                                             <td className="p-2">
                                                                 <input
                                                                     type="text"
@@ -1424,7 +1424,7 @@ const QuotationsDashboard = () => {
                                                             </td>
                                                             <td className="p-2">
                                                                 <div className="relative">
-                                                                    <span className="absolute left-2 top-1.5 text-[var(--text-muted)] select-none">$</span>
+                                                                    <span className="absolute left-2 top-1.5 text-(--text-muted) select-none">$</span>
                                                                     <input
                                                                         type="number"
                                                                         min="0"
@@ -1446,7 +1446,7 @@ const QuotationsDashboard = () => {
                                                                     />
                                                                 </div>
                                                             </td>
-                                                            <td className="p-2 text-right font-tech font-semibold text-[var(--text-main)] whitespace-nowrap">
+                                                            <td className="p-2 text-right font-tech font-semibold text-(--text-main) whitespace-nowrap">
                                                                 {formatCOP(rowSubtotal)}
                                                             </td>
                                                             <td className="p-2 text-center">
@@ -1473,9 +1473,9 @@ const QuotationsDashboard = () => {
                                                 (Number(item.quantity) || 0) * (Number(item.unitPrice) || 0)
 
                                             return (
-                                                <div key={idx} className="p-3 border border-[var(--border-hairline)] rounded-[6px] bg-[var(--bg-subtle)] space-y-2.5">
+                                                <div key={idx} className="p-3 border border-(--border-hairline) rounded-[6px] bg-(--bg-subtle) space-y-2.5">
                                                     <div>
-                                                        <label className="text-[10px] font-bold uppercase text-[var(--text-muted)] block mb-1">
+                                                        <label className="text-[10px] font-bold uppercase text-(--text-muted) block mb-1">
                                                             Descripción #{idx + 1}
                                                         </label>
                                                         <input
@@ -1492,7 +1492,7 @@ const QuotationsDashboard = () => {
 
                                                     <div className="grid grid-cols-12 gap-2 items-center">
                                                         <div className="col-span-4">
-                                                            <label className="text-[10px] text-[var(--text-muted)] block mb-0.5">Unidad</label>
+                                                            <label className="text-[10px] text-(--text-muted) block mb-0.5">Unidad</label>
                                                             <select
                                                                 value={item.unit || 'Und'}
                                                                 onChange={(e) =>
@@ -1506,7 +1506,7 @@ const QuotationsDashboard = () => {
                                                             </select>
                                                         </div>
                                                         <div className="col-span-3">
-                                                            <label className="text-[10px] text-[var(--text-muted)] block mb-0.5">Cant.</label>
+                                                            <label className="text-[10px] text-(--text-muted) block mb-0.5">Cant.</label>
                                                             <input
                                                                 type="number"
                                                                 min="0"
@@ -1523,7 +1523,7 @@ const QuotationsDashboard = () => {
                                                             />
                                                         </div>
                                                         <div className="col-span-5">
-                                                            <label className="text-[10px] text-[var(--text-muted)] block mb-0.5">Valor Unit. ($)</label>
+                                                            <label className="text-[10px] text-(--text-muted) block mb-0.5">Valor Unit. ($)</label>
                                                             <input
                                                                 type="number"
                                                                 min="0"
@@ -1542,8 +1542,8 @@ const QuotationsDashboard = () => {
                                                         </div>
                                                     </div>
 
-                                                    <div className="flex justify-between items-center pt-1 border-t border-[var(--border-hairline)] text-xs">
-                                                        <span className="font-tech font-bold text-[var(--text-main)]">
+                                                    <div className="flex justify-between items-center pt-1 border-t border-(--border-hairline) text-xs">
+                                                        <span className="font-tech font-bold text-(--text-main)">
                                                             Subtotal: {formatCOP(rowSubtotal)}
                                                         </span>
                                                         <button
@@ -1563,15 +1563,15 @@ const QuotationsDashboard = () => {
                                 {/* SECCIÓN 4: CONDICIONES COMERCIALES Y LIQUIDACIÓN FINANCIERA */}
                                 <div className="flex flex-col sm:flex-row justify-between items-start gap-6 pt-2">
                                     <div className="w-full sm:flex-1 space-y-3">
-                                        <div className="flex items-center gap-2 border-b border-[var(--border-hairline)] pb-1.5">
-                                            <span className="w-5 h-5 rounded-full bg-[var(--brand-navy)] text-white text-[11px] flex items-center justify-center font-bold">4</span>
-                                            <h4 className="font-semibold text-[var(--text-main)] text-xs sm:text-sm">
+                                        <div className="flex items-center gap-2 border-b border-(--border-hairline) pb-1.5">
+                                            <span className="w-5 h-5 rounded-full bg-(--brand-navy) text-white text-[11px] flex items-center justify-center font-bold">4</span>
+                                            <h4 className="font-semibold text-(--text-main) text-xs sm:text-sm">
                                                 Condiciones de Pago y Garantía
                                             </h4>
                                         </div>
                                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                                             <div>
-                                                <label className="block text-xs font-semibold text-[var(--text-main)] mb-1">
+                                                <label className="block text-xs font-semibold text-(--text-main) mb-1">
                                                     Forma de Pago
                                                 </label>
                                                 <select
@@ -1587,7 +1587,7 @@ const QuotationsDashboard = () => {
                                                 </select>
                                             </div>
                                             <div>
-                                                <label className="block text-xs font-semibold text-[var(--text-main)] mb-1">
+                                                <label className="block text-xs font-semibold text-(--text-main) mb-1">
                                                     Tiempo de Ejecución
                                                 </label>
                                                 <input
@@ -1602,7 +1602,7 @@ const QuotationsDashboard = () => {
                                             </div>
                                         </div>
                                         <div>
-                                            <label className="block text-xs font-semibold text-[var(--text-main)] mb-1">
+                                            <label className="block text-xs font-semibold text-(--text-main) mb-1">
                                                 Observaciones y Garantía para el Cliente
                                             </label>
                                             <textarea
@@ -1618,19 +1618,19 @@ const QuotationsDashboard = () => {
                                     </div>
 
                                     {/* Resumen Financiero */}
-                                    <div className="w-full sm:w-72 bg-[var(--bg-subtle)] border border-[var(--border-hairline)] rounded-[6px] p-4 space-y-2.5 shrink-0">
-                                        <h5 className="font-bold text-xs uppercase tracking-wider text-[var(--text-muted)] border-b border-[var(--border-hairline)] pb-1.5">
+                                    <div className="w-full sm:w-72 bg-(--bg-subtle) border border-(--border-hairline) rounded-[6px] p-4 space-y-2.5 shrink-0">
+                                        <h5 className="font-bold text-xs uppercase tracking-wider text-(--text-muted) border-b border-(--border-hairline) pb-1.5">
                                             Liquidación Final
                                         </h5>
 
-                                        <div className="flex justify-between text-xs text-[var(--text-muted)]">
+                                        <div className="flex justify-between text-xs text-(--text-muted)">
                                             <span>Subtotal General:</span>
-                                            <span className="font-tech font-semibold text-[var(--text-main)]">
+                                            <span className="font-tech font-semibold text-(--text-main)">
                                                 {formatCOP(financialSummary.subtotal)}
                                             </span>
                                         </div>
 
-                                        <div className="flex items-center justify-between gap-2 text-xs text-[var(--text-muted)]">
+                                        <div className="flex items-center justify-between gap-2 text-xs text-(--text-muted)">
                                             <span>Descuento ($):</span>
                                             <input
                                                 type="number"
@@ -1649,16 +1649,16 @@ const QuotationsDashboard = () => {
                                             />
                                         </div>
 
-                                        <div className="flex justify-between text-xs text-[var(--text-muted)]">
+                                        <div className="flex justify-between text-xs text-(--text-muted)">
                                             <span>Base Gravable:</span>
-                                            <span className="font-tech font-medium text-[var(--text-main)]">
+                                            <span className="font-tech font-medium text-(--text-main)">
                                                 {formatCOP(financialSummary.taxableBase)}
                                             </span>
                                         </div>
 
-                                        <div className="pt-2 border-t border-[var(--border-hairline)]">
+                                        <div className="pt-2 border-t border-(--border-hairline)">
                                             <label className="flex items-center justify-between cursor-pointer text-xs">
-                                                <span className="font-semibold text-[var(--text-main)]">
+                                                <span className="font-semibold text-(--text-main)">
                                                     Aplicar IVA (19%):
                                                 </span>
                                                 <input
@@ -1667,20 +1667,20 @@ const QuotationsDashboard = () => {
                                                     onChange={(e) =>
                                                         setFormData({ ...formData, applyIva: e.target.checked })
                                                     }
-                                                    className="w-4 h-4 accent-[var(--brand-orange)]"
+                                                    className="w-4 h-4 accent-(--brand-orange)"
                                                 />
                                             </label>
                                             {formData.applyIva && (
-                                                <div className="flex justify-between text-xs text-[var(--text-muted)] mt-1 font-tech">
+                                                <div className="flex justify-between text-xs text-(--text-muted) mt-1 font-tech">
                                                     <span>IVA 19%:</span>
                                                     <span>{formatCOP(financialSummary.tax)}</span>
                                                 </div>
                                             )}
                                         </div>
 
-                                        <div className="pt-2 border-t-2 border-[var(--border-hairline)] flex justify-between items-baseline">
-                                            <span className="text-sm font-bold text-[var(--text-main)]">Total a Pagar:</span>
-                                            <span className="text-base font-extrabold text-[var(--brand-navy)] font-tech">
+                                        <div className="pt-2 border-t-2 border-(--border-hairline) flex justify-between items-baseline">
+                                            <span className="text-sm font-bold text-(--text-main)">Total a Pagar:</span>
+                                            <span className="text-base font-extrabold text-(--brand-navy) font-tech">
                                                 {formatCOP(financialSummary.total)}
                                             </span>
                                         </div>
@@ -1690,7 +1690,7 @@ const QuotationsDashboard = () => {
                         </div>
 
                         {/* Footer con botones de acción */}
-                        <div className="flex flex-col-reverse sm:flex-row justify-between items-center gap-3 px-4 sm:px-6 py-3.5 border-t border-[var(--border-hairline)] bg-[var(--bg-subtle)] rounded-b-[6px]">
+                        <div className="flex flex-col-reverse sm:flex-row justify-between items-center gap-3 px-4 sm:px-6 py-3.5 border-t border-(--border-hairline) bg-(--bg-subtle) rounded-b-[6px]">
                             <button
                                 type="button"
                                 onClick={handlePreviewFromCurrentForm}
@@ -1704,7 +1704,7 @@ const QuotationsDashboard = () => {
                                 <button
                                     type="button"
                                     onClick={handleCloseModal}
-                                    className="px-3 py-2 text-xs text-[var(--text-muted)] hover:text-[var(--text-main)] transition-colors cursor-pointer"
+                                    className="px-3 py-2 text-xs text-(--text-muted) hover:text-(--text-main) transition-colors cursor-pointer"
                                 >
                                     Cancelar
                                 </button>
@@ -1726,15 +1726,15 @@ const QuotationsDashboard = () => {
                 <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-2 sm:p-6 overflow-y-auto print:p-0 print:bg-white">
                     <div className="card-precision bg-white w-full max-w-3xl overflow-hidden shadow-2xl flex flex-col max-h-[95vh] print:max-h-none print:shadow-none print:border-none">
                         {/* Barra superior no imprimible */}
-                        <div className="flex justify-between items-center px-4 sm:px-6 py-3 border-b border-[var(--border-hairline)] bg-[var(--bg-subtle)] print:hidden">
-                            <span className="text-xs font-semibold text-[var(--brand-navy)]">
+                        <div className="flex justify-between items-center px-4 sm:px-6 py-3 border-b border-(--border-hairline) bg-(--bg-subtle) print:hidden">
+                            <span className="text-xs font-semibold text-(--brand-navy)">
                                 Propuesta Formal para Cliente
                             </span>
                             <div className="flex items-center gap-2">
                                 <button
                                     onClick={() => handleSendEmail(previewQuotation)}
                                     disabled={sendingEmailId === previewQuotation._id}
-                                    className="px-3 py-1.5 text-xs font-semibold rounded-[4px] bg-[var(--brand-navy)] text-white flex items-center gap-1.5 cursor-pointer shadow-2xs hover:bg-[#032b3f] disabled:opacity-50"
+                                    className="px-3 py-1.5 text-xs font-semibold rounded-[4px] bg-(--brand-navy) text-white flex items-center gap-1.5 cursor-pointer shadow-2xs hover:bg-[#032b3f] disabled:opacity-50"
                                     title="Enviar PDF por Correo"
                                 >
                                     <FaEnvelope size={13} />
@@ -1756,7 +1756,7 @@ const QuotationsDashboard = () => {
                                 </button>
                                 <button
                                     onClick={() => setPreviewQuotation(null)}
-                                    className="px-2 py-1.5 text-xs text-[var(--text-muted)] hover:text-[var(--text-main)] cursor-pointer"
+                                    className="px-2 py-1.5 text-xs text-(--text-muted) hover:text-(--text-main) cursor-pointer"
                                 >
                                     Cerrar
                                 </button>
@@ -1777,7 +1777,7 @@ const QuotationsDashboard = () => {
                                     </div>
                                 </div>
                                 <div className="sm:text-right">
-                                    <span className="inline-block bg-[var(--brand-navy)] text-white font-tech text-xs px-2.5 py-1 rounded-[3px] font-bold">
+                                    <span className="inline-block bg-(--brand-navy) text-white font-tech text-xs px-2.5 py-1 rounded-[3px] font-bold">
                                         {previewQuotation.quoteNumber || 'COT-2026-###'}
                                     </span>
                                     <div className="text-xs text-gray-600 mt-2 space-y-0.5">
@@ -1788,8 +1788,8 @@ const QuotationsDashboard = () => {
                             </div>
 
                             {/* Datos de la Persona / Cliente Final */}
-                            <div className="bg-[var(--bg-subtle)] rounded-[6px] p-4 border border-[var(--border-hairline)]">
-                                <span className="text-[10px] font-bold uppercase tracking-wider text-[var(--text-muted)] block mb-2">
+                            <div className="bg-(--bg-subtle) rounded-[6px] p-4 border border-(--border-hairline)">
+                                <span className="text-[10px] font-bold uppercase tracking-wider text-(--text-muted) block mb-2">
                                     Presupuesto Presentado a:
                                 </span>
                                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
@@ -1813,7 +1813,7 @@ const QuotationsDashboard = () => {
                                     </div>
                                 </div>
                                 {previewQuotation.description && (
-                                    <div className="mt-3 pt-2 border-t border-[var(--border-hairline)] text-xs">
+                                    <div className="mt-3 pt-2 border-t border-(--border-hairline) text-xs">
                                         <span className="font-semibold text-gray-700">Trabajo a realizar: </span>
                                         <span className="text-gray-600">{previewQuotation.description}</span>
                                     </div>
@@ -1869,7 +1869,7 @@ const QuotationsDashboard = () => {
                                     )}
                                     <div className="pt-2 border-t-2 border-gray-300 flex justify-between font-bold text-sm text-gray-900">
                                         <span>TOTAL A PAGAR:</span>
-                                        <span className="text-base font-extrabold text-[var(--brand-navy)]">{formatCOP(previewQuotation.total || 0)}</span>
+                                        <span className="text-base font-extrabold text-(--brand-navy)">{formatCOP(previewQuotation.total || 0)}</span>
                                     </div>
                                 </div>
                             </div>

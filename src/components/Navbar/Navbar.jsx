@@ -8,7 +8,7 @@ const Navbar = () => {
     const { isAuthenticated } = useUser()
 
     return (
-        <header className="w-full border-b border-[var(--border-hairline)] bg-white sticky top-0 z-40">
+        <header className="w-full border-b border-(--border-hairline) bg-white sticky top-0 z-40">
             <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
                 {/* Logo a la izquierda */}
                 <div className="flex items-center">
@@ -19,23 +19,23 @@ const Navbar = () => {
 
                 {/* Enlaces centrados y con tamaño de letra visible (solo en landing pública) */}
                 {!isAuthenticated() ? (
-                    <nav className="hidden md:flex items-center justify-center gap-10 text-sm font-medium text-[var(--text-muted)]">
+                    <nav className="hidden md:flex items-center justify-center gap-10 text-sm font-medium text-(--text-muted)">
                         <a
                             href="#componentes"
-                            className="hover:text-[var(--text-main)] transition-colors py-1 hover:border-b-2 hover:border-[var(--brand-navy)]"
+                            className="hover:text-(--text-main) transition-colors py-1 hover:border-b-2 hover:border-(--brand-navy)"
                         >
                             Componentes
                         </a>
                         <a
                             href="#funcionalidades"
-                            className="hover:text-[var(--text-main)] transition-colors py-1 hover:border-b-2 hover:border-[var(--brand-navy)]"
+                            className="hover:text-(--text-main) transition-colors py-1 hover:border-b-2 hover:border-(--brand-navy)"
                         >
                             Funcionalidades
                         </a>
                     </nav>
                 ) : (
                     <div className="hidden md:block">
-                        <span className="text-xs font-tech text-[var(--text-muted)]">
+                        <span className="text-xs font-tech text-(--text-muted)">
                             Panel de Cotizadores
                         </span>
                     </div>

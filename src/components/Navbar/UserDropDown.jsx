@@ -23,20 +23,20 @@ const UserDropDown = () => {
             <div
                 tabIndex={0}
                 role="button"
-                className="w-8 h-8 rounded-full bg-[var(--brand-navy)] text-white flex items-center justify-center font-bold text-sm shadow-2xs cursor-pointer hover:opacity-90 transition-opacity select-none"
+                className="w-8 h-8 rounded-full bg-(--brand-navy) text-white flex items-center justify-center font-bold text-sm shadow-2xs cursor-pointer hover:opacity-90 transition-opacity select-none"
                 title={userInfo?.username || 'Cotizador'}
             >
                 {firstInitial}
             </div>
             <ul
                 tabIndex={0}
-                className="dropdown-content mt-2 z-50 p-2 bg-white border border-[var(--border-hairline)] rounded-[6px] shadow-md w-56 text-xs space-y-1"
+                className="dropdown-content mt-2 z-50 p-2 bg-white border border-(--border-hairline) rounded-[6px] shadow-md w-56 text-xs space-y-1"
             >
-                <li className="px-3 py-2 border-b border-[var(--border-hairline)]">
-                    <p className="font-semibold text-[var(--text-main)] truncate">
+                <li className="px-3 py-2 border-b border-(--border-hairline)">
+                    <p className="font-semibold text-(--text-main) truncate">
                         {userInfo?.username}
                     </p>
-                    <p className="text-[11px] text-[var(--text-muted)] truncate font-tech">
+                    <p className="text-[11px] text-(--text-muted) truncate font-tech">
                         {userInfo?.email}
                     </p>
                 </li>
